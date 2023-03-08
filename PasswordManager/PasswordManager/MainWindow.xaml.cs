@@ -24,5 +24,16 @@ namespace PasswordManager
         {
             InitializeComponent();
         }
+
+        private void ButtonBase_OnClick2(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new test_men_2();
+        }
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new Test();
+        }
+
+     
     }
 }
