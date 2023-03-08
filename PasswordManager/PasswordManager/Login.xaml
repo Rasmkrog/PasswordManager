@@ -6,9 +6,16 @@
       xmlns:local="clr-namespace:PasswordManager"
       mc:Ignorable="d"
       Title="Login" Height="450" Width="800">
+    
     <Grid>
-        <TextBlock Text="Login" VerticalAlignment="Top" Margin="0, 100, 0, 0" HorizontalAlignment="Center" FontSize="30" FontWeight="Heavy"/>
-        
-        
+        <TextBlock HorizontalAlignment="Center" Margin="0,75,0,0" FontSize="25">"Logo"</TextBlock>
+        <StackPanel Margin="0, 150, 0, 0" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Login" VerticalAlignment="Top"  Margin="0, 0, 25, 0" HorizontalAlignment="Center" FontSize="30" FontWeight="Heavy"/>
+            <Button Content="Sign up" BorderThickness="0" Background="Transparent" VerticalAlignment="Top" Margin="25, 0, 0, 0" HorizontalAlignment="Center" FontSize="30" FontWeight="Heavy"/>
+        </StackPanel>
+        <StackPanel Margin="0, 25, 0, 0" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBox />
+        </StackPanel>
+        <StackPanel>
     </Grid>
 </Page>

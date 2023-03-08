@@ -25,13 +25,13 @@ namespace PasswordManager
             InitializeComponent();
         }
 
-        private void ButtonBase_OnClick2(object sender, RoutedEventArgs e)
+        private void BtnClickList(object sender, RoutedEventArgs e)
         {
-            Main.Content = new test_men_2();
+            Main.Content = new Kodeord_Liste();
         }
-        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        private void BtnClickTlfj(object sender, RoutedEventArgs e)
         {
-            Main.Content = new Test();
+            Main.Content = new Tilføj_Kodeord();
         }
 
      

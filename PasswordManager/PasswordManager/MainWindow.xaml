@@ -8,13 +8,10 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Frame x:Name="Main" Margin="0, 35, 0, 0" NavigationUIVisibility="Hidden"/>
-        <Grid.ColumnDefinitions>
-            
-        </Grid.ColumnDefinitions>
         
         <StackPanel Orientation="Horizontal" Height="35" VerticalAlignment="Top" HorizontalAlignment="Center">
-            <Button Content="Tilføj Kodeord" Click="ButtonBase_OnClick"/>
-            <Button Content="Kodeordsliste" Click="ButtonBase_OnClick2"/>
+            <Button Content="Tilføj Kodeord" Click="BtnClickTlfj"/>
+            <Button Content="Kodeordsliste" Click="BtnClickList"/>
             <Button Content="Kodegenerering" Click="ButtonBase_OnClick3"/>
             <Button Content="Login" Click="ButtonBase_OnClick4"/>
             <Button Content="Sign Up" Click="ButtonBase_OnClick5"/>
