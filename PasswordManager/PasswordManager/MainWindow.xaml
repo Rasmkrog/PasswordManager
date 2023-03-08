@@ -4,18 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PasswordManager"
-        mc:Ignorable="d" FontFamily="sega ui" FontSize="18"
+        xmlns:components="clr-namespace:PasswordManager.Components"
+        mc:Ignorable="d" FontSize="18"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Frame x:Name="Main" Margin="0, 35, 0, 0" NavigationUIVisibility="Hidden"/>
-        
-        <StackPanel Orientation="Horizontal" Height="35" VerticalAlignment="Top" HorizontalAlignment="Center">
-            <Button Content="Tilføj Kodeord" Click="BtnClickTlfj"/>
-            <Button Content="Kodeordsliste" Click="BtnClickList"/>
-            <Button Content="Kodegenerering" Click="ButtonBase_OnClick3"/>
-            <Button Content="Login" Click="ButtonBase_OnClick4"/>
-            <Button Content="Sign Up" Click="ButtonBase_OnClick5"/>
-            <Button Content="Index" Click="ButtonBase_OnClick6"/>
-        </StackPanel>
-    </Grid>
+        <components:PageLayout>
+                <Grid>
+                        <TextBlock Text="hej"></TextBlock>
+                </Grid>
+        </components:PageLayout>
 </Window>
