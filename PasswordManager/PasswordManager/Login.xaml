@@ -16,6 +16,6 @@
         <StackPanel Margin="0, 25, 0, 0" VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBox />
         </StackPanel>
-        <StackPanel>
+        <StackPanel/>
     </Grid>
 </Page>

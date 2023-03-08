@@ -6,6 +6,10 @@ public partial class PageLayout : UserControl
 {
     public PageLayout()
     {
+        
         InitializeComponent();
     }
+
+    
+    public object Header { get; set; }
 }

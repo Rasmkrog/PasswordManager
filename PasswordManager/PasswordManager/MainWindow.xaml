@@ -7,9 +7,5 @@
         xmlns:components="clr-namespace:PasswordManager.Components"
         mc:Ignorable="d" FontSize="18"
         Title="MainWindow" Height="450" Width="800">
-        <components:PageLayout>
-                <Grid>
-                        <TextBlock Text="hej"></TextBlock>
-                </Grid>
-        </components:PageLayout>
+        
 </Window>
