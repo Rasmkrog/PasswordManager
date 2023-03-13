@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace PasswordManager.Components;
 
@@ -9,7 +10,4 @@ public partial class PageLayout : UserControl
         
         InitializeComponent();
     }
-
-    
-    public object Header { get; set; }
 }

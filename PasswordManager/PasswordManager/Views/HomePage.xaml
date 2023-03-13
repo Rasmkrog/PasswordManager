@@ -3,11 +3,18 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:PasswordManager.Components"
     xmlns:components="clr-namespace:PasswordManager.Components"
-    xmlns:local="clr-namespace:PasswordManager"
     mc:Ignorable="d"
     Title="Index" Height="450" Width="800">
-    />
+    <components:PageLayout>
+        <Grid>
+            <Frame x:Name="HomePage" />
+            <TextBlock Text="HomePage" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50" FontWeight="Heavy"/>
+        </Grid>
+        
+    </components:PageLayout>
+    
     
     <!--<Grid>
         <Frame x:Name="HomePage" />
