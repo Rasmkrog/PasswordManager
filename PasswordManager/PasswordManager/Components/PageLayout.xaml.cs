@@ -5,9 +5,13 @@ namespace PasswordManager.Components;
 
 public partial class PageLayout : UserControl
 {
-    public PageLayout()
+    public PageLayout(string title, int maxLength)
     {
-        
         InitializeComponent();
+        this.DataContext = this;
     }
+
+    public string Title { get; set; }
+
+    public int MaxLength { get; set; }
 }

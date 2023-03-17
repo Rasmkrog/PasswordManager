@@ -7,19 +7,8 @@
     xmlns:components="clr-namespace:PasswordManager.Components"
     mc:Ignorable="d"
     Title="Index" Height="450" Width="800">
-    <components:PageLayout>
         <Grid>
             <Frame x:Name="HomePage" />
             <TextBlock Text="HomePage" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50" FontWeight="Heavy"/>
         </Grid>
-        
-    </components:PageLayout>
-    
-    
-    <!--<Grid>
-        <Frame x:Name="HomePage" />
-        <TextBlock Text="HomePage" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50" FontWeight="Heavy"/>
-    </Grid>-->
-    
-        
 </Page>

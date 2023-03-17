@@ -29,6 +29,7 @@ namespace PasswordManager
         {
             //Main.Content = new Kodeord_Liste();
         }
+        
         private void BtnClickTlfj(object sender, RoutedEventArgs e)
         {
             //Main.Content = new Tilføj_Kodeord();
