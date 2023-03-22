@@ -25,6 +25,43 @@
                                 
                         </Grid.RowDefinitions>
                         
+                        <TextBlock
+                                Text="PW Manager"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Foreground="White"
+                                FontSize="22"
+                                />
+                        
+                        <StackPanel Grid.Row="1"
+                                Grid.Column="0"
+                                Orientation="Vertical"
+                                Margin=" 20, 20 ,0,0">
+                                <RadioButton Content="Home"
+                                                Height="50"
+                                                Foreground="White"
+                                                FontSize="14" />
+                                <RadioButton Content="Password Generator"
+                                                Height="50"
+                                                Foreground="White"
+                                                FontSize="14" />
+                                <RadioButton Content="Add Password"
+                                                Height="50"
+                                                Foreground="White"
+                                                FontSize="14" />
+                                
+                                <RadioButton Content="Security check"
+                                                Height="50"
+                                                Foreground="White"
+                                                FontSize="14" />
+                                <RadioButton Content="Settings"
+                                                Height="50"
+                                                Foreground="White"
+                                                FontSize="14" />
+                                
+                        </StackPanel>
+                        
+                        
                 </Grid>
                 
         </Border>
