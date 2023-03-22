@@ -12,7 +12,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-        <uc:PageLayout Title="Enter title:" MaxLength="30" Height="50" />
-        <uc:PageLayout Title="Enter description:" MaxLength="140" Grid.Row="1" />
+        <!--<uc:PageLayout Title="Enter title:" MaxLength="30" Height="50" />
+        <uc:PageLayout Title="Enter description:" MaxLength="140" Grid.Row="1" />-->
     </Grid>
 </Window>

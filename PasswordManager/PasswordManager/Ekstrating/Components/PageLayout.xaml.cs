@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 
 namespace PasswordManager.Components;
-
+/*
 public partial class PageLayout : UserControl
 {
     public PageLayout(string title, int maxLength)
@@ -14,4 +14,4 @@ public partial class PageLayout : UserControl
     public string Title { get; set; }
 
     public int MaxLength { get; set; }
-}
+}*/
