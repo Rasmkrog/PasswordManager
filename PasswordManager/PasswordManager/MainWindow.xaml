@@ -24,13 +24,12 @@
                 </Style>
             </Grid.Resources>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="auto"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="75"/>
                 <RowDefinition/>
-                    
             </Grid.RowDefinitions>
             
             <TextBlock
@@ -41,36 +40,58 @@
                 Foreground="White"
                 FontSize="20"/>
             
-            <StackPanel Grid.Row="1"
-                        Grid.Column="0" Style="{StaticResource StackPanelStyle}">
-                <RadioButton Content="Home"
-                             Height="50"
-                             Foreground="White"
-                             FontSize="14" 
-                             Style="{StaticResource NavbarButtonTheme}"/>
-                <RadioButton Content="Password Generator"
-                             Height="50"
-                             Foreground="White"
-                             FontSize="14" 
-                             Style="{StaticResource NavbarButtonTheme}"/>
-                <RadioButton Content="Add Password"
-                             Height="50"
-                             Foreground="White"
-                             FontSize="14"
-                             Style="{StaticResource NavbarButtonTheme}"/>
+            <Grid ShowGridLines="True" Grid.Row="1" Grid.Column="0" Margin="0,0,15,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0"
+                            Grid.Column="0" Style="{StaticResource StackPanelStyle}">
+                    <RadioButton Content="Home"
+                                 Height="50"
+                                 Foreground="White"
+                                 FontSize="14" 
+                                 Style="{StaticResource NavbarButtonTheme}"/>
+                    <RadioButton Content="Password Generator"
+                                 Height="50"
+                                 Foreground="White"
+                                 FontSize="14" 
+                                 Style="{StaticResource NavbarButtonTheme}"/>
+                    <RadioButton Content="Add Password"
+                                 Height="50"
+                                 Foreground="White"
+                                 FontSize="14"
+                                 Style="{StaticResource NavbarButtonTheme}"/>
+                        
+                    <RadioButton Content="Security check"
+                                 Height="50"
+                                 Foreground="White"
+                                 FontSize="14"
+                                 Style="{StaticResource NavbarButtonTheme}"/>
                     
-                <RadioButton Content="Security check"
-                             Height="50"
-                             Foreground="White"
-                             FontSize="14"
-                             Style="{StaticResource NavbarButtonTheme}"/>
-                <RadioButton Content="Settings"
-                             Height="50"
-                             Foreground="White"
-                             FontSize="14" 
-                             Style="{StaticResource NavbarButtonTheme}"/>
-                    
-            </StackPanel>
+                </StackPanel>
+                
+                <StackPanel Grid.Row="1" Style="{StaticResource StackPanelStyle}" 
+                            VerticalAlignment="Bottom" 
+                            Margin="0, 0, 0, 10">
+                    <RadioButton Content="Settings"
+                                 Height="50"
+                                 Foreground="White"
+                                 FontSize="14" 
+                                 Style="{StaticResource NavbarButtonTheme}"/>
+                    <RadioButton Content="Language"
+                                 Height="50"
+                                 Foreground="White"
+                                 FontSize="14" 
+                                 Style="{StaticResource NavbarButtonTheme}"/>
+                    <RadioButton Content="User"
+                                 Height="50"
+                                 Foreground="    White"
+                                 FontSize="14"
+                                 Style="{StaticResource NavbarButtonTheme}"/>
+                </StackPanel>
+            </Grid>
+            
             
             <TextBlock Grid.Row="0" 
                        Grid.Column="1"
