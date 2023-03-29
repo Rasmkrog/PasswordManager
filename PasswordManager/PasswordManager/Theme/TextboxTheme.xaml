@@ -18,8 +18,7 @@
                                      Background="Transparent"
                                      VerticalAlignment="center"
                                      HorizontalAlignment="Center"
-                                     Foreground="#CFCFCF"
-                                     />
+                                     Foreground="White"/>
                         </Grid>
                     </Border>
                 </ControlTemplate>

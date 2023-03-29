@@ -20,21 +20,43 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Image Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Source="/Billeder/funny image.png" Stretch="none" Height="40"></Image>
-        <TextBlock Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Text="Login" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        
+        <Image Grid.Row="0"
+               Grid.Column="1"
+               Grid.ColumnSpan="2"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Source="/Billeder/funny image.png"
+               Stretch="none"
+               Height="40"></Image>
+        <TextBlock Grid.Column="1"
+                   Grid.ColumnSpan="2"
+                   Grid.Row="1"
+                   Text="Login"
+                   FontSize="20"
+                   FontWeight="Bold"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"/>
         <TextBox Grid.Row="2"
-                Grid.Column="1"
-                Grid.ColumnSpan="2"
-                Width="200"
-                Height="30"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                Margin="10"
-                >
-            
-        </TextBox>
-        
-        
-        
+                 Grid.Column="1"
+                 Grid.ColumnSpan="2"
+                 VerticalAlignment="Top"
+                 HorizontalAlignment="Center"
+                 x:Name="Brugernavn"
+                 Style="{StaticResource LoginTextBox}"/>
+        <TextBox Grid.Row="2"
+                 Grid.Column="1"
+                 Grid.ColumnSpan="2"
+                 VerticalAlignment="Bottom"
+                 HorizontalAlignment="Center"
+                 x:Name="Kodeord"
+                 Style="{StaticResource LoginTextBox}"/>
+        <TextBlock Grid.Row="3"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="2"
+                   Text="Har du ikke en bruger? lav en her :))))"
+                   Margin="10"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="top"/>
     </Grid>
 </Page>
