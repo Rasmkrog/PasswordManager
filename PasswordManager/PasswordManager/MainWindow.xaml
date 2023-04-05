@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PasswordManager"
+        xmlns:viewModel="clr-namespace:PasswordManager.MVVM.ViewModel"
+
         mc:Ignorable="d"
         WindowStyle="None"
         ResizeMode="NoResize"
@@ -13,6 +15,9 @@
         Height="600" 
         Width="920">
         
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
     <Border Background="#272537"
             BorderThickness="0,0,0,0"
             CornerRadius="20">
@@ -44,7 +49,7 @@
                     <Grid ShowGridLines="True">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="110"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Grid Row="0" ShowGridLines="True" Margin="0,0,0,0">
@@ -76,7 +81,6 @@
                                          Style="{StaticResource NavbarButtonTheme}"/>
                         </Grid>
                         
-                        
                         <Grid Row="2" ShowGridLines="True">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
@@ -102,17 +106,6 @@
                     </Grid>
                 </StackPanel>
             
-            
-            
-            <!--<Grid ShowGridLines="True" Grid.Row="1" Grid.Column="0" Margin="0,0,15,0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                
-            </Grid>-->
-            
-            
             <TextBlock Grid.Row="0" 
                        Grid.Column="1"
                        VerticalAlignment="Center"
@@ -120,14 +113,20 @@
                        Margin="5,5,20,5"
                        Width="250"
                        Height="50"
-                       TextAlignment="Right"
-                       
-            >
+                       TextAlignment="Right"/>
+            
+            
+            <ContentControl Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="10"
+                            Content="{Binding CurrentView}">
                 
-            </TextBlock>
+                
+                
+            </ContentControl>
             
             
-        </Grid>
+            </Grid>
         
     </Border>
     

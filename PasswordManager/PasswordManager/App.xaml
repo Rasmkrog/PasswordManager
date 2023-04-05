@@ -2,6 +2,9 @@
                         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                         xmlns:local="clr-namespace:PasswordManager"
+                        xmlns:viewModel="clr-namespace:PasswordManager.MVVM.ViewModel"
+                        xmlns:view="clr-namespace:PasswordManager.MVVM.View"
+
                         StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -9,6 +12,10 @@
                 <ResourceDictionary Source="Theme/NavBarButton.xaml"/>
                 <ResourceDictionary Source="Theme/TextboxTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            
+            <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
+                <view:HomeView/>
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
