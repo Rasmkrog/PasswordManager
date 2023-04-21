@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PasswordManager"
         xmlns:viewModel="clr-namespace:PasswordManager.MVVM.ViewModel"
+        
 
         mc:Ignorable="d"
         WindowStyle="None"
@@ -120,9 +121,6 @@
                             Grid.Column="1"
                             Margin="10"
                             Content="{Binding CurrentView}">
-                
-                
-                
             </ContentControl>
             
             
