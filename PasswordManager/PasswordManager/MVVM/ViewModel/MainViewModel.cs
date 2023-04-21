@@ -1,5 +1,5 @@
 ﻿using PasswordManager.Core;
-
+using System.Security.Cryptography;
 namespace PasswordManager.MVVM.ViewModel;
 
 public class MainViewModel : ObservableObject
@@ -17,6 +17,8 @@ public class MainViewModel : ObservableObject
             OnPropertyChanged();
         }
     }
+    PbeEncryptionAlgorithm pbe = new PbeEncryptionAlgorithm();
+    
     
     public MainViewModel()
     {
