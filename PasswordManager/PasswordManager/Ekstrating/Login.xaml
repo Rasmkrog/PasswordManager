@@ -5,7 +5,11 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:PasswordManager"
       mc:Ignorable="d"
-      Title="Login" Height="450" Width="800">
+      Title="Login"
+      Height="450"
+      Width="800"
+      Background="#272537">
+    
     <Grid ShowGridLines="true">
         <Grid.ColumnDefinitions>    
             <ColumnDefinition></ColumnDefinition>
@@ -35,6 +39,7 @@
                    Text="Login"
                    FontSize="20"
                    FontWeight="Bold"
+                   Foreground="GhostWhite"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"/>
         <TextBox Grid.Row="2"
@@ -55,6 +60,7 @@
                    Grid.Column="1"
                    Grid.ColumnSpan="2"
                    Text="Har du ikke en bruger? lav en her :))))"
+                   Foreground="GhostWhite"
                    Margin="10"
                    HorizontalAlignment="Center"
                    VerticalAlignment="top"/>
