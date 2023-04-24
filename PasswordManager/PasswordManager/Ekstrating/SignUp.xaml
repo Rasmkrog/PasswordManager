@@ -25,6 +25,7 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         
+        <!-- Logo -->
         <Image Grid.Row="0"
                Grid.Column="1"
                Grid.ColumnSpan="2"
@@ -33,6 +34,7 @@
                Source="/Billeder/funny image.png"
                Stretch="none"
                Height="40"></Image>
+        <!-- Sign up titel-->
         <TextBlock Grid.Column="1"
                    Grid.ColumnSpan="2"
                    Grid.Row="1"
@@ -42,6 +44,8 @@
                    Foreground="GhostWhite"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"/>
+        
+        <!-- Brugernavn box-->
         <TextBox Grid.Row="2"
                  Grid.Column="1"
                  Grid.ColumnSpan="2"
@@ -49,6 +53,7 @@
                  HorizontalAlignment="Center"
                  x:Name="Brugernavn"
                  Style="{StaticResource LoginTextBox}"/>
+        <!-- Kodeord box -->
         <TextBox Grid.Row="2"
                  Grid.Column="1"
                  Grid.ColumnSpan="2"
@@ -56,6 +61,7 @@
                  HorizontalAlignment="Center"
                  x:Name="Kodeord"
                  Style="{StaticResource LoginTextBox}"/>
+        <!-- Opret bruger box-->
         <TextBox Grid.Row="3"
                 Grid.Column="1"
                 Grid.ColumnSpan="2"
@@ -64,5 +70,22 @@
                 Width="120"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center"/>
+        
+        <!-- Keyhole logo, kodeord -->
+        <Image Grid.Row="2"
+               Grid.Column="1"
+               Source="/Billeder/Keyhole.png"
+               Height="20"
+               VerticalAlignment="Bottom"
+               HorizontalAlignment="Center"
+               Margin="10, 10, 40, 10"/>
+        <!-- Username logo, brugernavn -->
+        <Image Grid.Row="2"
+               Grid.Column="1"
+               Source="/Billeder/username-icon-png-5.jpg"
+               Height="20"
+               VerticalAlignment="Top"
+               HorizontalAlignment="Center"
+               Margin="10, 10, 40, 00"/>
     </Grid>
 </Page>

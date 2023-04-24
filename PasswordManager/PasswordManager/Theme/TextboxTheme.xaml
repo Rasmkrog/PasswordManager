@@ -20,6 +20,23 @@
                                      HorizontalAlignment="Center"
                                      Foreground="GhostWhite"
                                      BorderBrush="Beige"/>
+                            
+                            <TextBlock IsHitTestVisible="False"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Left"
+                                       Margin="10,0,0,0"
+                                       Foreground="GhostWhite">
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Text, ElementName=BrugernavnBox}" Value="">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                            <Setter Property="Visibility" Value="Hidden"/>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
                         </Grid>
                     </Border>
                 </ControlTemplate>
