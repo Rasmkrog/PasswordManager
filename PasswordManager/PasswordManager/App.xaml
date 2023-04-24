@@ -4,7 +4,7 @@
                         xmlns:local="clr-namespace:PasswordManager"
                         xmlns:viewModel="clr-namespace:PasswordManager.MVVM.ViewModel"
                         xmlns:view="clr-namespace:PasswordManager.MVVM.View"
-
+                        
                         StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -16,6 +16,23 @@
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
                 <view:HomeView/>
             </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type viewModel:AddPasswordViewModel}">
+                <view:AddPasswordView/>
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type viewModel:LoginViewModel}">
+                <view:LoginView/>
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type viewModel:PasswordGenViewModel}">
+                <view:PasswordGenView/>
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type viewModel:UserViewModel}">
+                <view:UserView/>
+            </DataTemplate>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

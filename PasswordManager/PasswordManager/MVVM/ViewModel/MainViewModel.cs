@@ -4,7 +4,13 @@ namespace PasswordManager.MVVM.ViewModel;
 
 public class MainViewModel : ObservableObject
 {
-    public HomeViewModel HomeVM {get; set;}
+    public HomeViewModel HomeVm {get; set;}
+    
+    public AddPasswordViewModel AddPasswordVm {get; set;}
+    public LoginViewModel LoginVm {get; set;}
+    public PasswordGenViewModel PasswordGenVm {get; set;}
+    public UserViewModel UserVm {get; set;}
+    
     
     private object _currentView;
     
@@ -17,12 +23,11 @@ public class MainViewModel : ObservableObject
             OnPropertyChanged();
         }
     }
-    PbeEncryptionAlgorithm pbe = new PbeEncryptionAlgorithm();
     
-    
+
     public MainViewModel()
     {
-        HomeVM = new HomeViewModel();
-        CurrentView = HomeVM;
+        HomeVm = new HomeViewModel();
+        CurrentView = HomeVm;
     }
 }
