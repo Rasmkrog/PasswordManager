@@ -3,31 +3,31 @@ using System.Windows.Input;
 
 namespace PasswordManager.Core;
 
-class RelayCommand : ICommand
+public class RelayCommand : ICommand
 {
     
-    private Action<Object> execute;
-    private Func<object, bool> canExecute;
+    private Action<object> _execute;
+    private Func<object, bool> _canExecute;
 
     public event EventHandler? CanExecuteChanged
     {
         add => CommandManager.RequerySuggested += value;
-        remove => CommandManager.RequerySuggested -= value;
+        remove => CommandManager. RequerySuggested -= value;
     }
 
-    protected RelayCommand(Action<Object> execute, Func<object, bool> canExecute)
+    public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
     {
-        this.execute = execute;
-        this.canExecute = canExecute;
+        _execute = execute;
+        _canExecute = canExecute;
     }
     
     public bool CanExecute(object? parameter)
     {
-        return parameter != null && this.canExecute(parameter);
+        return _canExecute == null || _canExecute(parameter);
     }
     
     public void Execute(object? parameter)
-    {
-        if (parameter != null) this.execute(parameter);
+    { 
+        _execute(parameter);
     }
 }

@@ -66,22 +66,27 @@
                                          Height="50"
                                          Foreground="White"
                                          FontSize="14" 
-                                         Style="{StaticResource NavbarButtonTheme}"/>
+                                         Style="{StaticResource NavbarButtonTheme}"
+                                         IsChecked="True"
+                                         Command="{Binding HomeViewCommand}"/>
                             <RadioButton Content="Password Generator" Grid.Row="1"
                                          Height="50"
                                          Foreground="White"
                                          FontSize="14" 
-                                         Style="{StaticResource NavbarButtonTheme}"/>
+                                         Style="{StaticResource NavbarButtonTheme}"
+                                         Command="{Binding PasswordGenViewCommand}"/>
                             <RadioButton Content="Add Password" Grid.Row="2"
                                          Height="50"
                                          Foreground="White"
                                          FontSize="14"
-                                         Style="{StaticResource NavbarButtonTheme}"/>
+                                         Style="{StaticResource NavbarButtonTheme}"
+                                         Command="{Binding AddPasswordViewCommand}"/>
                             <RadioButton Content="Security check" Grid.Row="3" Padding="0,0,0,0"
                                          Height="50"
                                          Foreground="White"
                                          FontSize="14"
-                                         Style="{StaticResource NavbarButtonTheme}"/>
+                                         Style="{StaticResource NavbarButtonTheme}"
+                                         Command="{Binding HomeViewCommand}"/>
                         </Grid>
                         
                         <Grid Row="2" ShowGridLines="True">
