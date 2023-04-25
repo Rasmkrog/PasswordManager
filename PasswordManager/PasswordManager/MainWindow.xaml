@@ -95,21 +95,21 @@
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            <RadioButton Content="Settings" Grid.Row="0"
+                            <Button Content="Settings" Grid.Row="0"
                                          Height="50"
                                          Foreground="White"
-                                         FontSize="14" 
-                                         Style="{StaticResource NavbarButtonTheme}"/>
-                            <RadioButton Content="Language" Grid.Row="1"
+                                         FontSize="14" />
+                                         <!-- Style="{StaticResource }" -->
+                            <Button Content="Language" Grid.Row="1"
                                          Height="50"
                                          Foreground="White"
-                                         FontSize="14" 
-                                         Style="{StaticResource NavbarButtonTheme}"/>
-                            <RadioButton Content="User" Grid.Row="2"
+                                         FontSize="14"/> 
+                                         <!-- Style="{StaticResource }" -->
+                            <Button Content="User" Grid.Row="2"
                                          Height="50"
                                          Foreground="    White"
-                                         FontSize="14"
-                                         Style="{StaticResource NavbarButtonTheme}"/>
+                                         FontSize="14"/>
+                                         <!--Style="{StaticResource }"-->
                         </Grid>
                     </Grid>
                 </StackPanel>
