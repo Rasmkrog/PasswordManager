@@ -35,5 +35,10 @@ namespace PasswordManager
             //Main.Content = new Tilføj_Kodeord();
         }
         
+        //close App button
+        private void BtnClickClose(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }
