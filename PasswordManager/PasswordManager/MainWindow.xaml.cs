@@ -25,7 +25,7 @@ namespace PasswordManager
             InitializeComponent();
         }
         
-        //close App button
+        //Luk program Knap
         private void BtnClickClose(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
