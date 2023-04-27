@@ -24,16 +24,11 @@ namespace PasswordManager
         {
             InitializeComponent();
         }
-
-        private void BtnClickList(object sender, RoutedEventArgs e)
-        {
-            //Main.Content = new Kodeord_Liste();
-        }
         
-        private void BtnClickTlfj(object sender, RoutedEventArgs e)
+        //close App button
+        private void BtnClickClose(object sender, RoutedEventArgs e)
         {
-            //Main.Content = new Tilføj_Kodeord();
+            Application.Current.Shutdown();
         }
-        
     }
 }

@@ -51,7 +51,9 @@
                  Grid.ColumnSpan="2"
                  VerticalAlignment="Top"
                  HorizontalAlignment="Center"
-                 x:Name="Brugernavn"
+                 Text="Brugernavn"
+                 Width="200"
+                 Height="40"
                  Style="{StaticResource LoginTextBox}"/>
         <!-- Kodeord box -->
         <TextBox Grid.Row="2"
@@ -60,7 +62,9 @@
                  VerticalAlignment="Bottom"
                  HorizontalAlignment="Center"
                  IsHitTestVisible="False"
-                 Text="kodeord"
+                 Width="200"
+                 Height="40"
+                 Text="Kodeord"
                  Style="{StaticResource LoginTextBox}"/>
         <!-- "Lav ny bruger"-text -->
         <TextBlock Grid.Row="3"
