@@ -5,36 +5,92 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:PasswordManager.MVVM.View"
              mc:Ignorable="d"
-             d:DesignHeight="450" d:DesignWidth="800">
-             
-    <StackPanel>
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="Transparent">
+    <Grid 
+        Background="#272537">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
         
-        <TextBlock Text="Your passwords"
-                   Foreground="GhostWhite"
-                   FontSize="28"
-                   HorizontalAlignment="Center"
-                   Margin="0,0,0,20"/>
-        <Button Content="Add new password"/>
-        <StackPanel Orientation="Horizontal">
-            <Border Width="400" Height="200"
-                    Background="Orange">
+        <!-- Left side grid for number of logins-->
+        <Grid Grid.Column="0" Grid.Row="0" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0"
+                       Text="Logins"
+                       Foreground="White"
+                       FontSize="28"
+                       HorizontalAlignment="Left"
+                       FontFamily="Segoe UI"
+                       Margin="40, 0 ,0 ,10 ">
+            </TextBlock>
+            
+            <!-- Grid for number of logins-->
+            <Grid Column="0" Row="1" ShowGridLines="True">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
                 
-            </Border>
-        </StackPanel>
+                <TextBlock Grid.Column="0"
+                           Text="x"
+                           FontSize="16"
+                           Foreground="Beige"
+                           HorizontalAlignment="Left"
+                           FontFamily="Segoe UI"
+                           FontStyle="Italic"
+                           Margin="40, 0 ,0 ,20 " />
+
+                <TextBlock Grid.Column="1"
+                           Text="number of logins"
+                           Foreground="Beige"
+                           FontSize="16"
+                           HorizontalAlignment="Left"
+                           FontFamily="Segoe UI"
+                           FontStyle="Italic"
+                           Margin="10,0 ,0 ,20 " />
+            </Grid>
+        </Grid>
+        
+        <!-- Right side grid for searchbox for logins-->
+        <!-- TODO: Add searchbox in grid row 0, colum 1-->
+        
+        <!-- Grid for logins-->
+        <DataGrid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+            
+        </DataGrid>
         
         
-        <ListView Background="Beige">
-                <DataGrid ItemsSource="{Binding Path=Data}">
-                    
-                    
-                </DataGrid>
-                    
-                    
+        <!--<StackPanel Grid.Row="1">
                 
-        </ListView>
+                
+                
+                <Button Content="Add new password"/>
+            <StackPanel Orientation="Horizontal">
+                <Border Width="400" Height="200"
+                        Background="Orange" />
+            </StackPanel>
         
-        <Button Content="Test Connection" Click="TestConnection_Click" />
+        
+            <ListView Background="Beige">
+                <DataGrid ItemsSource="{Binding Path=Data}" />
+
+
+            </ListView>
+        
+            <Button Content="Test Connection" Click="TestConnection_Click" />
         
         
-    </StackPanel>
+        </StackPanel>-->
+        <Button Grid.Row="2" Grid.Column="1" Content="Test Connection" Click="TestConnection_Click" />
+    </Grid>
 </UserControl>
