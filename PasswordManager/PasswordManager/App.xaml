@@ -6,6 +6,7 @@
                         xmlns:view="clr-namespace:PasswordManager.MVVM.View"
                         
                         StartupUri="MainWindow.xaml">
+                        
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

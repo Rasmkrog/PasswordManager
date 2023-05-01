@@ -4,11 +4,11 @@ namespace PasswordManager.MVVM.ViewModel;
 
 public class MainViewModel : ObservableObject
 {
-    public RelayCommand HomeViewCommand { get; set; }
-    public RelayCommand AddPasswordViewCommand { get; set; }
-    public RelayCommand LoginViewCommand { get; set; }
-    public RelayCommand PasswordGenViewCommand { get; set; }
-    public RelayCommand UserViewCommand { get; set; }
+    public RelayCommand HomeViewCommand { get; }
+    public RelayCommand AddPasswordViewCommand { get; }
+    public RelayCommand LoginViewCommand { get; }
+    public RelayCommand PasswordGenViewCommand { get; }
+    public RelayCommand UserViewCommand { get;}
     
     
     
@@ -19,7 +19,7 @@ public class MainViewModel : ObservableObject
     public UserViewModel UserVm {get; set;}
     
     
-    private object _currentView;
+    private object _currentView = null!;
     
     public object CurrentView
     {

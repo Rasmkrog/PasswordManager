@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:PasswordManager.MVVM.View"
+             xmlns:Model="clr-namespace:PasswordManager.MVVM.Model"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800"
              Background="Transparent">
@@ -35,11 +36,11 @@
             </TextBlock>
             
             <!-- Grid for number of logins-->
-            <Grid Column="0" Row="1" ShowGridLines="True">
+            <Grid Column="0" Row="1" ShowGridLines="False">
                 <Grid.ColumnDefinitions >
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+               </Grid.ColumnDefinitions>
                 
                 <TextBlock Grid.Column="0"
                            Text="x"
@@ -57,7 +58,7 @@
                            HorizontalAlignment="Left"
                            FontFamily="Segoe UI"
                            FontStyle="Italic"
-                           Margin="10,0 ,0 ,20 " />
+                           Margin="10,0 ,0 ,20 " /> 
             </Grid>
         </Grid>
         
@@ -65,9 +66,9 @@
         <!-- TODO: Add searchbox in grid row 0, colum 1-->
         
         <!-- Grid for logins-->
-        <DataGrid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+        <Grid x:Name="LoginGrid" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
             
-        </DataGrid>
+        </Grid>
         
         
         <!--<StackPanel Grid.Row="1">
