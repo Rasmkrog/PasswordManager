@@ -66,32 +66,18 @@
         <!-- TODO: Add searchbox in grid row 0, colum 1-->
         
         <!-- Grid for logins-->
-        <Grid x:Name="LoginGrid" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
-            
+        <Grid Name="LoginGrid" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" ShowGridLines="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
         </Grid>
         
-        
-        <!--<StackPanel Grid.Row="1">
-                
-                
-                
-                <Button Content="Add new password"/>
-            <StackPanel Orientation="Horizontal">
-                <Border Width="400" Height="200"
-                        Background="Orange" />
-            </StackPanel>
-        
-        
-            <ListView Background="Beige">
-                <DataGrid ItemsSource="{Binding Path=Data}" />
-
-
-            </ListView>
-        
-            <Button Content="Test Connection" Click="TestConnection_Click" />
-        
-        
-        </StackPanel>-->
         <Button Grid.Row="2" Grid.Column="1" Content="Test Connection" Click="TestConnection_Click" />
     </Grid>
 </UserControl>
