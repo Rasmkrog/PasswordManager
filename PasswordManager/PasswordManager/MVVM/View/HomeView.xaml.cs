@@ -81,7 +81,8 @@ public partial class HomeView : UserControl
                     
                     if (password.Text != null)
                     {
-                        password.Text = AesEncryption.Decrypt(reader.GetString("Hashed_Password"), UserInfo.Password,reader.GetString("Salt") );
+                        password.Text = AesEncryption.Decrypt(reader.GetString("Hashed_Password"), UserInfo.Password,
+                            reader.GetString("Salt"));
                     }
                     else
                     {
@@ -165,12 +166,6 @@ public partial class HomeView : UserControl
             connection.Close();
         }
     }
-    
-    
-    
-    
-    
-    
     
     private void TestConnection_Click(object sender, RoutedEventArgs e)
     {
