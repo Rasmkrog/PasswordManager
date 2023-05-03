@@ -55,7 +55,7 @@ public partial class Kode_Generering : Page
             }
 
 
-            return();
+            return "sda";
         }
 
         void GetPass()

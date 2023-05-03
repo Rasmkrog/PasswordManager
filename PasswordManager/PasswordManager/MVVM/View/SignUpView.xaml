@@ -77,7 +77,7 @@
                 Height="40"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center"
-                MouseLeftButtonDown="" />
+                />
         
         <!-- Keyhole logo, kodeord -->
         <Image Grid.Row="2"
