@@ -9,7 +9,7 @@ public class MainViewModel : ObservableObject
     public RelayCommand LoginViewCommand { get; }
     public RelayCommand PasswordGenViewCommand { get; }
     public RelayCommand UserViewCommand { get;}
-    
+
     
     
     public HomeViewModel HomeVm {get; set;}
@@ -17,6 +17,7 @@ public class MainViewModel : ObservableObject
     public LoginViewModel LoginVm {get; set;}
     public PasswordGenViewModel PasswordGenVm {get; set;}
     public UserViewModel UserVm {get; set;}
+    
     
     
     private object _currentView = null!;
@@ -39,6 +40,7 @@ public class MainViewModel : ObservableObject
         LoginVm = new LoginViewModel();
         PasswordGenVm = new PasswordGenViewModel();
         UserVm = new UserViewModel();
+  
         
         CurrentView = HomeVm;
         
@@ -66,5 +68,6 @@ public class MainViewModel : ObservableObject
         {
             CurrentView = UserVm;
         });
+        
     }
 }
