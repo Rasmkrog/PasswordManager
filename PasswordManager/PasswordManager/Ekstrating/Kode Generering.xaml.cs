@@ -12,7 +12,7 @@ public partial class Kode_Generering : Page
         InitializeComponent();
     }
 
-    private static bool addUpperCase;
+        private static bool addUpperCase;
         private static bool addNumbers;
         private static bool addSymbols;
         private static string validChars;
