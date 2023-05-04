@@ -32,47 +32,55 @@
             </TextBlock>
             
             <!-- Grid for number of logins-->
-            <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <StackPanel Grid.Row="1" Orientation="Horizontal"
+                        Margin="0,0,0,20"
+                        >
                 <TextBlock Grid.Column="0"
                            Text="x"
+                           x:Name="NumberOfLogins"
                            FontSize="16"
-                           Foreground="Beige"
+                           Foreground="White"
                            HorizontalAlignment="Left"
                            FontFamily="Segoe UI"
                            FontStyle="Italic"
-                           Margin="40, 0 ,0 ,20 " />
+                           Margin="40, 0 ,0 ,0 " />
 
                 <TextBlock Grid.Column="1"
-                           Text="number of logins"
-                           Foreground="Beige"
+                           Text=" logins"
+                           x:Name="loginstext"
+                           Foreground="White"
                            FontSize="16"
                            HorizontalAlignment="Left"
                            FontFamily="Segoe UI"
                            FontStyle="Italic"
-                           Margin="10,0 ,0 ,20 " /> 
+                           Margin="10,0 ,0 ,0 " /> 
             </StackPanel>
         </Grid>
         
         <!-- Right side grid for searchbox for logins-->
         <!-- TODO: Add searchbox in grid row 0, colum 1-->
-        <Grid Grid.Row="1" Name="LoginGrid">
-            <GridViewColumnHeader Content="Title"/>
-            <GridViewColumnHeader Grid.Column="0" Content="Username"/>
-            <GridViewColumnHeader Grid.Column="0" Content="Password"/>
-            <GridViewColumnHeader Grid.Column="0" Content="Last Modified"/>
+        
+        <Border Grid.Row="1" 
+                BorderBrush="Gray" 
+                BorderThickness="1" 
+                CornerRadius="20">            
             
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-        </Grid>
-        
-        
+            
+            <Grid Grid.Row="1" x:Name="LoginGrid" Margin="5" ShowGridLines="True" >
+            
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+            </Grid>
+        </Border>
         
         <Button Grid.Row="2" Grid.Column="0" Content="Test Connection" Click="TestConnection_Click" />
     </Grid>
