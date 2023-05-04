@@ -80,12 +80,12 @@
                                          FontSize="14"
                                          Style="{StaticResource NavbarButtonTheme}"
                                          Command="{Binding AddPasswordViewCommand}"/>
-                            <RadioButton Content="Security check" Grid.Row="3" Padding="0,0,0,0"
+                            <RadioButton Content="Sign Up" Grid.Row="3" Padding="0,0,0,0"
                                          Height="50"
                                          Foreground="White"
                                          FontSize="14"
                                          Style="{StaticResource NavbarButtonTheme}"
-                                         Command="{Binding HomeViewCommand}"/>
+                                         Command="{Binding SignUpModelCommand}"/>
                         </Grid>
                         
                         <Grid Row="2" ShowGridLines="True">
