@@ -1,6 +1,7 @@
-﻿namespace PasswordManager.MVVM.ViewModel;
+﻿using PasswordManager.Core;
+namespace PasswordManager.MVVM.ViewModel;
 
-public class AddPasswordViewModel
+public class AddPasswordViewModel : ObservableObject
 {
     
 }
