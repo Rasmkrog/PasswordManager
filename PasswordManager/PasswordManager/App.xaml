@@ -38,6 +38,10 @@
                 <view:UserView/>
             </DataTemplate>
             
+            <DataTemplate DataType="{x:Type viewModel:SignUpViewModel}">
+                <view:SignUpView/>
+            </DataTemplate>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

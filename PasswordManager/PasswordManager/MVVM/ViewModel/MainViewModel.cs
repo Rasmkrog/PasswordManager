@@ -1,5 +1,6 @@
 ﻿using PasswordManager.Core;
 using System.Security.Cryptography;
+using System.Security.RightsManagement;
 namespace PasswordManager.MVVM.ViewModel;
 
 public class MainViewModel : ObservableObject
@@ -9,7 +10,7 @@ public class MainViewModel : ObservableObject
     public RelayCommand LoginViewCommand { get; }
     public RelayCommand PasswordGenViewCommand { get; }
     public RelayCommand UserViewCommand { get;}
-
+    public RelayCommand SignUpViewCommand { get; }
     
     
     public HomeViewModel HomeVm {get; set;}
@@ -17,6 +18,7 @@ public class MainViewModel : ObservableObject
     public LoginViewModel LoginVm {get; set;}
     public PasswordGenViewModel PasswordGenVm {get; set;}
     public UserViewModel UserVm {get; set;}
+    public SignUpViewModel SignUpVm {get; set;}
     
     
     
@@ -40,6 +42,7 @@ public class MainViewModel : ObservableObject
         LoginVm = new LoginViewModel();
         PasswordGenVm = new PasswordGenViewModel();
         UserVm = new UserViewModel();
+        SignUpVm = new SignUpViewModel();
   
         
         CurrentView = HomeVm;
@@ -67,6 +70,11 @@ public class MainViewModel : ObservableObject
         UserViewCommand = new RelayCommand( o=>
         {
             CurrentView = UserVm;
+        });
+        
+        SignUpViewCommand = new RelayCommand( o=>
+        {
+            CurrentView = SignUpVm;
         });
         
     }
