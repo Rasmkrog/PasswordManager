@@ -9,10 +9,14 @@
                         
     <Application.Resources>
         <ResourceDictionary>
+
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Theme/NavBarButton.xaml"/>
                 <ResourceDictionary Source="Theme/TextboxTheme.xaml"/>
+                <ResourceDictionary Source="Theme/PasswordBoxTemplate.xaml"/>
+                
             </ResourceDictionary.MergedDictionaries>
+            
             
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
                 <view:HomeView/>
