@@ -8,19 +8,15 @@
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800"
              Background="Transparent">
-    <Grid 
-        Background="#272537">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+    <Grid Background="#272537">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         
-        <!-- Left side grid for number of logins-->
+        
+        
         <Grid Grid.Column="0" Grid.Row="0" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -36,12 +32,7 @@
             </TextBlock>
             
             <!-- Grid for number of logins-->
-            <Grid Column="0" Row="1" ShowGridLines="False">
-                <Grid.ColumnDefinitions >
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-               </Grid.ColumnDefinitions>
-                
+            <StackPanel Grid.Row="1" Orientation="Horizontal">
                 <TextBlock Grid.Column="0"
                            Text="x"
                            FontSize="16"
@@ -59,14 +50,17 @@
                            FontFamily="Segoe UI"
                            FontStyle="Italic"
                            Margin="10,0 ,0 ,20 " /> 
-            </Grid>
+            </StackPanel>
         </Grid>
         
         <!-- Right side grid for searchbox for logins-->
         <!-- TODO: Add searchbox in grid row 0, colum 1-->
-        
-        <!-- Grid for logins-->
-        <Grid Name="LoginGrid" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" ShowGridLines="True">
+        <Grid Grid.Row="1" Name="LoginGrid">
+            <GridViewColumnHeader Content="Title"/>
+            <GridViewColumnHeader Grid.Column="0" Content="Username"/>
+            <GridViewColumnHeader Grid.Column="0" Content="Password"/>
+            <GridViewColumnHeader Grid.Column="0" Content="Last Modified"/>
+            
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -78,6 +72,8 @@
             </Grid.ColumnDefinitions>
         </Grid>
         
-        <Button Grid.Row="2" Grid.Column="1" Content="Test Connection" Click="TestConnection_Click" />
+        
+        
+        <Button Grid.Row="2" Grid.Column="0" Content="Test Connection" Click="TestConnection_Click" />
     </Grid>
 </UserControl>
