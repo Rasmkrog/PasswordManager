@@ -7,5 +7,9 @@ public partial class PasswordGenView : UserControl
     public PasswordGenView()
     {
         InitializeComponent();
+        
+        
+        
     }
+    
 }
