@@ -20,10 +20,13 @@ namespace PasswordManager.MVVM.View
         private int count = 0;
         private bool usernameExists = false;
         private bool emailExists = false;
+
         private void OpretBruger_Click(object sender, RoutedEventArgs e)
         {
             count = 0;
-            
+            emailExists = false;
+            usernameExists = false;
+
             try
             {
                 string usernameText = Brugernavn.Text;
@@ -31,8 +34,6 @@ namespace PasswordManager.MVVM.View
                 string passwordText = Kodeord.Text;
 
                 // Check if the username or email already exist in the database
-                bool usernameExists = false;
-                bool emailExists = false;
                 using (SqlConnection con = new SqlConnection(ConnectionString))
                 {
                     con.Open();
@@ -41,7 +42,7 @@ namespace PasswordManager.MVVM.View
                     using (SqlCommand command = new SqlCommand("SELECT COUNT(*) FROM [User] WHERE Username = @Username", con))
                     {
                         command.Parameters.AddWithValue("@Username", usernameText);
-                        int count = (int)command.ExecuteScalar();
+                        count = (int)command.ExecuteScalar();
                         usernameExists = (count > 0);
                     }
 
@@ -49,7 +50,7 @@ namespace PasswordManager.MVVM.View
                     using (SqlCommand command = new SqlCommand("SELECT COUNT(*) FROM [User] WHERE Email = @Email", con))
                     {
                         command.Parameters.AddWithValue("@Email", emailText);
-                        int count = (int)command.ExecuteScalar();
+                        count = (int)command.ExecuteScalar();
                         emailExists = (count > 0);
                     }
                 }
@@ -58,12 +59,12 @@ namespace PasswordManager.MVVM.View
                 if (usernameExists)
                 {
                     MessageBox.Show("Username already exists. Please choose a different username.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
+                    Refresh();
                 }
                 else if (emailExists)
                 {
                     MessageBox.Show("Email already exists. Please use a different email address.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
+                    Refresh();
                 }
 
                 // Insert the new user data into the database
@@ -80,9 +81,7 @@ namespace PasswordManager.MVVM.View
                         command.Parameters.AddWithValue("@HashedPassword", passwordText);
                         command.ExecuteNonQuery();
                     }
-
-                    HomeView homeView = new HomeView();
-                    SignUp_View.Navigate(homeView);
+                    ToHomeView();
                 }
             }
             catch (SqlException ex)
@@ -94,63 +93,18 @@ namespace PasswordManager.MVVM.View
                 MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        // Method to refresh the view
+        private void Refresh()
+        {
+            SignUpView signUpView = new SignUpView();
+            this.Content = signUpView;
+        }
+        
+        private void ToHomeView()
+        {
+            HomeView homeView = new HomeView();
+            this.Content = homeView;
+        }
     }
 }
-
-/*using System;
-using System.ComponentModel.DataAnnotations;
-using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
-using System.Windows;
-using System.Windows.Controls;
-using PasswordManager.Core;
-using static PasswordManager.Core.DBConnection;
-
-namespace PasswordManager.MVVM.View;
-
-public partial class SignUpView : UserControl
-{
-    public SignUpView()
-    {
-        InitializeComponent();
-    }
-
-    
-        private void OpretBruger_Click(object sender, EventArgs e)
-    {
-        try
-        {
-            string usernameText = Brugernavn.Text;
-            string emailText = Email.Text;
-            string passwordText = Kodeord.Text;
-
-            string insertQuery = "INSERT INTO [User] (Username, Email, Hashed_Password, DateOfOprettelse) VALUES (@Username, @Email, @HashedPassword, GETDATE())";
-
-            using (SqlConnection con = new SqlConnection(ConnectionString))
-            {
-                con.Open();
-
-                using (SqlCommand command = new SqlCommand(insertQuery, con))
-                {
-                    command.Parameters.AddWithValue("@Username", usernameText);
-                    command.Parameters.AddWithValue("@Email", emailText);
-                    command.Parameters.AddWithValue("@HashedPassword", passwordText);
-                    command.ExecuteNonQuery();
-                }
-
-                HomeView homeView = new HomeView();
-                SignUp_View.Navigate(homeView);
-            }
-        }
-        catch (SqlException ex)
-        {
-            MessageBox.Show(ex.Message, "SQL Error", MessageBoxButton.OK, MessageBoxImage.Error);
-        }
-        catch (Exception ex)
-        {
-            MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-        }
-    }
-
-}*/

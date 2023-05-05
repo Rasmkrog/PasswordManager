@@ -75,9 +75,5 @@ public partial class PasswordGenView : UserControl
 
                 ran = ran + add[x];
             }
-
-
-
         }
-    
 }
