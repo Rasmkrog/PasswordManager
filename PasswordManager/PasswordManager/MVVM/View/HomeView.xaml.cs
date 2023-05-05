@@ -25,6 +25,7 @@ public partial class HomeView : UserControl
         
         //initialize the grid
         LoadData(LoginGrid, NumberOfLogins, loginstext);
+        
     }
 
     private const string SqlQuery = "SELECT Title, Username, Hashed_Password, Salt, Email, URL, Notes, Date_Of_Creation From Logins WHERE UserID = @UserID";
