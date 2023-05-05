@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using PasswordManager.MVVM.View;
 
 namespace PasswordManager
 {
@@ -15,8 +16,9 @@ namespace PasswordManager
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            MainWindow mw = new MainWindow();
-            mw.Show();
+            //MainWindow mw = new MainWindow();
+            LoginView lv = new LoginView();
+            lv.Show();
             base.OnStartup(e);
         }
 

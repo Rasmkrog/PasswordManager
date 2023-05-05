@@ -21,8 +21,10 @@ namespace PasswordManager.MVVM.View
         private bool usernameExists = false;
         private bool emailExists = false;
 
+        // 
         private void OpretBruger_Click(object sender, RoutedEventArgs e)
         {
+            // Default værdier til variabler
             count = 0;
             emailExists = false;
             usernameExists = false;
@@ -33,7 +35,7 @@ namespace PasswordManager.MVVM.View
                 string emailText = Email.Text;
                 string passwordText = Kodeord.Text;
 
-                // Check if the username or email already exist in the database
+                // Tjekker om brugernavn eller mail allerede er i databasen
                 using (SqlConnection con = new SqlConnection(ConnectionString))
                 {
                     con.Open();
@@ -67,7 +69,7 @@ namespace PasswordManager.MVVM.View
                     Refresh();
                 }
 
-                // Insert the new user data into the database
+                // Indsætter ny brugers data i databasen
                 string insertQuery = "INSERT INTO [User] (Username, Email, Hashed_Password, DateOfOprettelse) VALUES (@Username, @Email, @HashedPassword, GETDATE())";
 
                 using (SqlConnection con = new SqlConnection(ConnectionString))
@@ -84,6 +86,7 @@ namespace PasswordManager.MVVM.View
                     ToHomeView();
                 }
             }
+            // Fejl-beskeder
             catch (SqlException ex)
             {
                 MessageBox.Show(ex.Message, "SQL Error", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -94,13 +97,14 @@ namespace PasswordManager.MVVM.View
             }
         }
 
-        // Method to refresh the view
+        // genindlæser siden, så alt bliver genskabt
         private void Refresh()
         {
             SignUpView signUpView = new SignUpView();
             this.Content = signUpView;
         }
         
+        // Sender brugeren til index
         private void ToHomeView()
         {
             HomeView homeView = new HomeView();
