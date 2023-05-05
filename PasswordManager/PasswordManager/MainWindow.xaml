@@ -19,9 +19,6 @@
     <Window.DataContext>
         <viewModel:MainViewModel/>
     </Window.DataContext>
-    <Window.Resources>
-        
-    </Window.Resources>
     
     
     
