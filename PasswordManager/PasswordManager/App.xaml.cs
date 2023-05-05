@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using System.Windows;
 using PasswordManager.MVVM.View;
 
@@ -16,11 +17,18 @@ namespace PasswordManager
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            //MainWindow mw = new MainWindow();
+            MainWindow mw = new MainWindow();
             LoginView lv = new LoginView();
-            lv.Show();
+            //lv.Show();
+            mw.Show();
             base.OnStartup(e);
+
+
+            var fontlist = Fonts.SystemFontFamilies;
         }
+        
+        
+        
 
     }
 }
