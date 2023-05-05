@@ -14,76 +14,87 @@ public partial class PasswordGenView : UserControl
         InitializeComponent();
         
     }
-    public static class PasswordGenerator
-    {
-        private const string LowercaseChars = "abcdefghijklmnopqrstuvwxyz";
-        private const string UppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        private const string DigitChars = "0123456789";
-        private const string SpecialChars = "!@#$%^&*()_+-=[]{}|;':\",./<>?";
+   public static class PasswordGenerator
+{
+    // Definer karakterkonstanterne, der vil blive brugt til at generere kodeordet
+    private const string LowercaseChars = "abcdefghijklmnopqrstuvwxyz";
+    private const string UppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private const string DigitChars = "0123456789";
+    private const string SpecialChars = "!@#$%^&*()_+-=[]{}|;':\",./<>?";
 
-        public static string Generate(int length, bool includeLowercase, bool includeUppercase, bool includeDigits, bool includeSpecialChars)
+    // Funktion til at generere et kodeord
+    public static string Generate(int length, bool includeLowercase, bool includeUppercase, bool includeDigits, bool includeSpecialChars)
+    {
+        // Kontrollér, at længden er større end eller lig med 1
+        if (length < 1)
         {
-            if (length < 1)
-            {
-                throw new ArgumentException("Length must be greater than or equal to 1");
-            }
-
-            var allowedChars = "";
-
-            if (includeLowercase)
-            {
-                allowedChars += LowercaseChars;
-            }
-
-            if (includeUppercase)
-            {
-                allowedChars += UppercaseChars;
-            }
-
-            if (includeDigits)
-            {
-                allowedChars += DigitChars;
-            }
-
-            if (includeSpecialChars)
-            {
-                allowedChars += SpecialChars;
-            }
-
-            if (allowedChars.Length == 0)
-            {
-                throw new ArgumentException("At least one character set must be selected");
-            }
-
-            var result = new char[length];
-
-            using (var rng = new RNGCryptoServiceProvider())
-            {
-                byte[] bytes = new byte[sizeof(uint)];
-
-                for (int i = 0; i < length; i++)
-                {
-                    rng.GetBytes(bytes);
-                    uint value = BitConverter.ToUInt32(bytes, 0);
-                    int index = (int)(value % (uint)allowedChars.Length);
-                    result[i] = allowedChars[index];
-                }
-            }
-
-            return new string(result);
+            throw new ArgumentException("Length must be greater than or equal to 1");
         }
+
+        // Opret en streng, der indeholder de karakterer, der er valgt af brugeren
+        var allowedChars = "";
+
+        if (includeLowercase)
+        {
+            allowedChars += LowercaseChars;
+        }
+
+        if (includeUppercase)
+        {
+            allowedChars += UppercaseChars;
+        }
+
+        if (includeDigits)
+        {
+            allowedChars += DigitChars;
+        }
+
+        if (includeSpecialChars)
+        {
+            allowedChars += SpecialChars;
+        }
+
+        // Kontrollér, at mindst ét karakter sæt er valgt
+        if (allowedChars.Length == 0)
+        {
+            throw new ArgumentException("At least one character set must be selected");
+        }
+
+        // Opret en char array til at holde resultatet
+        var result = new char[length];
+
+        // Opret en kryptografisk tilfældighedsgenerator
+        using (var rng = new RNGCryptoServiceProvider())
+        {
+            byte[] bytes = new byte[sizeof(uint)];
+
+            // Loop gennem længden af det ønskede kodeord
+            for (int i = 0; i < length; i++)
+            {
+                // Generer en tilfældig uint-værdi
+                rng.GetBytes(bytes);
+                uint value = BitConverter.ToUInt32(bytes, 0);
+
+                // Bestem, hvilken karakter der skal bruges baseret på den tilfældige uint-værdi og de tilladte karakterer
+                int index = (int)(value % (uint)allowedChars.Length);
+                result[i] = allowedChars[index];
+            }
+        }
+
+        // Konverter resultatet til en streng og returner det
+        return new string(result);
     }
+}
         
-    private void GeneratePasswordButton_Click(object sender, RoutedEventArgs e)
-    {
-        int length = int.Parse(LengthTextBox.Text);
-        bool includeLowercase = LowercaseCheckBox.IsChecked.Value;
-        bool includeUppercase = UppercaseCheckBox.IsChecked.Value;
-        bool includeDigits = DigitsCheckBox.IsChecked.Value;
-        bool includeSpecialChars = SpecialCharsCheckBox.IsChecked.Value;
+   private void GeneratePasswordButton_Click(object sender, RoutedEventArgs e)
+   {
+       // Hent brugerens valg
+       int length = int.Parse(LengthTextBox.Text);
+       bool includeLowercase = LowercaseCheckBox.IsChecked.Value;
+       bool includeUppercase = UppercaseCheckBox.IsChecked.Value;
+       bool includeDigits = DigitsCheckBox.IsChecked.Value;
+       bool includeSpecialChars = SpecialCharsCheckBox.IsChecked.Value;
 
-        var password = PasswordGenerator.Generate(length, includeLowercase, includeUppercase, includeDigits, includeSpecialChars);
-
-        PasswordTextBox.Text = password;
-    }
+       // Generer et kodeord baseret på brugerens valg
+   }
 }
