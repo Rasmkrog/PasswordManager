@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Security.AccessControl;
 using System.Windows.Controls;
+using System.Security.Cryptography;
+using System.Linq;
+using System.Windows;
 
 namespace PasswordManager.MVVM.View;
 
@@ -10,70 +14,76 @@ public partial class PasswordGenView : UserControl
         InitializeComponent();
         
     }
-    
-    private static bool addUpperCase;
-        private static bool addNumbers;
-        private static bool addSymbols;
-        private static string validChars;
+    public static class PasswordGenerator
+    {
+        private const string LowercaseChars = "abcdefghijklmnopqrstuvwxyz";
+        private const string UppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        private const string DigitChars = "0123456789";
+        private const string SpecialChars = "!@#$%^&*()_+-=[]{}|;':\",./<>?";
 
-
-        static string generatePassword(int length)
+        public static string Generate(int length, bool includeLowercase, bool includeUppercase, bool includeDigits, bool includeSpecialChars)
         {
-            // Check what checkboxes are ticked
-            if (addUpperCase && addNumbers && addSymbols)
+            if (length < 1)
             {
-                validChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890?!@#$%^&*";
-            }
-            else if (addUpperCase && addNumbers)
-            {
-                validChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-            }
-            else if (addUpperCase && addSymbols)
-            {
-                validChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ?!@#$%^&*";
-            }
-            else if (addNumbers && addSymbols)
-            {
-                validChars = "abcdefghijklmnopqrstuvwxyz1234567890?!@#$%^&*";
-            }
-            else if (addUpperCase)
-            {
-                validChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            }
-            else if (addNumbers)
-            {
-                validChars = "abcdefghijklmnopqrstuvwxyz1234567890";
-            }
-            else if (addSymbols)
-            {
-                validChars = "abcdefghijklmnopqrstuvwxyz?!@#$%^&*";
-            }
-            else
-            {
-                validChars = "abcdefghijklmnopqrstuvwxyz";
+                throw new ArgumentException("Length must be greater than or equal to 1");
             }
 
+            var allowedChars = "";
 
-            return "sda";
+            if (includeLowercase)
+            {
+                allowedChars += LowercaseChars;
+            }
+
+            if (includeUppercase)
+            {
+                allowedChars += UppercaseChars;
+            }
+
+            if (includeDigits)
+            {
+                allowedChars += DigitChars;
+            }
+
+            if (includeSpecialChars)
+            {
+                allowedChars += SpecialChars;
+            }
+
+            if (allowedChars.Length == 0)
+            {
+                throw new ArgumentException("At least one character set must be selected");
+            }
+
+            var result = new char[length];
+
+            using (var rng = new RNGCryptoServiceProvider())
+            {
+                byte[] bytes = new byte[sizeof(uint)];
+
+                for (int i = 0; i < length; i++)
+                {
+                    rng.GetBytes(bytes);
+                    uint value = BitConverter.ToUInt32(bytes, 0);
+                    int index = (int)(value % (uint)allowedChars.Length);
+                    result[i] = allowedChars[index];
+                }
+            }
+
+            return new string(result);
         }
+    }
+        
+    private void GeneratePasswordButton_Click(object sender, RoutedEventArgs e)
+    {
+        int length = int.Parse(LengthTextBox.Text);
+        bool includeLowercase = LowercaseCheckBox.IsChecked.Value;
+        bool includeUppercase = UppercaseCheckBox.IsChecked.Value;
+        bool includeDigits = DigitsCheckBox.IsChecked.Value;
+        bool includeSpecialChars = SpecialCharsCheckBox.IsChecked.Value;
 
-        public void GetPass()
-        {
-            Random res = new Random();
-                //denne skal laves om så den kan bruge det over
-               String add = "abcdefghijklmnopqrstuvwxyz1234567890?!@#$%^&*";
+        var password = PasswordGenerator.Generate(length, includeLowercase, includeUppercase, includeDigits, includeSpecialChars);
 
-               //Den string den der viser kode når det er sat ind 
-            String ran = "";
-            
-            int size = int.Parse(PasswordLenght.Text);
-
-            for (int i = 0; i < size; i++)
-            {
-                //så kan den vælge all char 
-                int x = res.Next(26);
-
-                ran = ran + add[x];
-            }
-        }
+        PasswordTextBox.Text = password;
+    }
 }
