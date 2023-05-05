@@ -43,6 +43,8 @@ namespace PasswordManager.MVVM.View
                 {
                     MessageBox.Show("Username or password invalid or incorrect:" , "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
+                await reader.CloseAsync();
+                
             }
             catch (Exception exception)
             {
