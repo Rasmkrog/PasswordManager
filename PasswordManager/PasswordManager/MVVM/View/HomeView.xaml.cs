@@ -43,8 +43,6 @@ public partial class HomeView : UserControl
             SqlCommand command = new SqlCommand(SqlQuery, connection);
             
             //test if UserID is not null
-            
-            
             if (UserInfo.UserID == null)
             {
                 MessageBox.Show("UserID is null", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -55,6 +53,7 @@ public partial class HomeView : UserControl
                 //ReSharper disable once HeapView.BoxingAllocation
                 //Parameterize the UserID
                 command.Parameters.AddWithValue("@UserID", UserInfo.UserID);
+                
             }
             
             //Execute the command
