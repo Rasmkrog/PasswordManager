@@ -17,23 +17,18 @@ namespace PasswordManager.MVVM.View
         {
             InitializeComponent();
         }
-
-        private int count = 0;
-        private bool usernameExists = false;
-        private bool LoggedIn = false;
-
+        
         private async void Login_Click(object sender, RoutedEventArgs e)
         {
-            count = 0;
-            LoggedIn = false;
-            usernameExists = false;
+            UserInfo.UserName = brugernavn.Text;
+            UserInfo.Password = kodeord.Text;
 
             SqlConnection con = new SqlConnection(ConnectionString);
             try
             {
                 con.Open();
                 SqlCommand command = new SqlCommand(
-                    "SELECT COUNT(*) FROM [User] WHERE Username = @Username AND Hashed_Password = @Hashed_Password",
+                    "SELECT UserID, Username, Hashed_Password From [User] WHERE Username = @Username AND Hashed_Password = @Hashed_Password",
                     con);
                 command.Parameters.AddWithValue("@Username", UserInfo.UserName);
                 command.Parameters.AddWithValue("@Hashed_Password", UserInfo.Password);
@@ -58,55 +53,9 @@ namespace PasswordManager.MVVM.View
             {
                 con.Close();
             }
-                
-            try
-            {
-                string usernameText = brugernavn.Text;
-                string passwordText = kodeord.Text;
-
-                
-                // Check if the username or email already exist in the database
-                /*using (SqlConnection con = new SqlConnection(ConnectionString))
-                {
-                    con.Open();
-                    // Tjekker om kodeord passer med brugernavn
-
-                    SqlCommand command2 =
-                        new SqlCommand(
-                            "SELECT COUNT(*) FROM [User] WHERE Username = @Username AND Hashed_Password = @Hashed_Password",
-                            con);
-                    
-                        //command.Parameters.AddWithValue("@UserID", UserInfo.UserID);
-                            SqlDataReader reader = command2.ExecuteReaderAsync();
-                            UserInfo.UserID =
-                                LoggedIn = true;
-
-                }*/
-                
-                // Sender brugeren til HomeView hvis LoggedIn == true
-                if (LoggedIn)
-                {
-                    ToHomeView();
-                }
-                // Fejlbesked hvis kode eller brugernavn er forkert
-                else if (LoggedIn == false)
-                {
-                    MessageBox.Show("Forkerte login informationer.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    kodeord.Text = "";
-                    brugernavn.Text = "";
-                }
-
-
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "SQL Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
         }
+        
+        
         // Sender brugeren til index
         private void ToHomeView()
         {
