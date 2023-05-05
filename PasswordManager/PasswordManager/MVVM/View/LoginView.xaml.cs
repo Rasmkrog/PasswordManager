@@ -42,6 +42,7 @@ namespace PasswordManager.MVVM.View
                 else
                 {
                     MessageBox.Show("Username or password invalid or incorrect:" , "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Refresh();
                 }
             }
             catch (Exception exception)

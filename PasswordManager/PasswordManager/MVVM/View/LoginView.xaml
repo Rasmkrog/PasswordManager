@@ -51,7 +51,7 @@
                  Name="brugernavn"
                  VerticalAlignment="Top"
                  HorizontalAlignment="Center"
-                 Text="Brugernavn"
+                 Text=""
                  Width="200"
                  Height="40"
                  Style="{StaticResource LoginTextBox}"/>
@@ -65,7 +65,7 @@
                  IsHitTestVisible="False"
                  Width="200"
                  Height="40"
-                 Text="Kodeord"
+                 Text=""
                  Style="{StaticResource LoginTextBox}"/>
         <!-- Login knap -->
         <Button Grid.Row="3"
