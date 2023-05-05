@@ -27,7 +27,8 @@
                        Foreground="White"
                        FontSize="28"
                        HorizontalAlignment="Left"
-                       FontFamily="Segoe UI"
+                       FontFamily="\Fonts\#Nunito"
+                       FontWeight="ExtraBlack"
                        Margin="40, 0 ,0 ,10 ">
             </TextBlock>
             
@@ -38,10 +39,11 @@
                 <TextBlock Grid.Column="0"
                            Text="x"
                            x:Name="NumberOfLogins"
-                           FontSize="16"
+                           FontSize="20"
+                           FontWeight="Medium"
                            Foreground="White"
                            HorizontalAlignment="Left"
-                           FontFamily="Segoe UI"
+                           FontFamily="\Fonts\#Nunito"
                            FontStyle="Italic"
                            Margin="40, 0 ,0 ,0 " />
 
@@ -49,9 +51,10 @@
                            Text=" logins"
                            x:Name="loginstext"
                            Foreground="White"
-                           FontSize="16"
+                           FontSize="20"
                            HorizontalAlignment="Left"
-                           FontFamily="Segoe UI"
+                           FontFamily="\Fonts\#Nunito"
+                           FontWeight="Medium"
                            FontStyle="Italic"
                            Margin="10,0 ,0 ,0 " /> 
             </StackPanel>
@@ -66,7 +69,7 @@
                 CornerRadius="20">            
             
             
-            <Grid Grid.Row="1" x:Name="LoginGrid" Margin="5" ShowGridLines="True" >
+            <Grid Grid.Row="1" x:Name="LoginGrid" Margin="5">
             
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -82,6 +85,14 @@
             </Grid>
         </Border>
         
-        <Button Grid.Row="2" Grid.Column="0" Content="Test Connection" Click="TestConnection_Click" />
+        <Button Grid.Row="2" 
+                Grid.Column="0"
+                HorizontalAlignment="Right"
+                Margin="0,0,10,0"
+                Content="Test Connection" 
+                Click="TestConnection_Click" 
+                Width="50"
+                />
+        
     </Grid>
 </UserControl>
