@@ -1,6 +1,6 @@
 ﻿namespace PasswordManager.MVVM.ViewModel;
 
-public class PasswordGenViewModel
+public class PasswordGenViewModel 
 {
     
 }
