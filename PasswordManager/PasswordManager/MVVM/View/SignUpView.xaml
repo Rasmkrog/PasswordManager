@@ -239,16 +239,17 @@
                         Content="Her du allerede en bruger? Login her :)"
                         FontFamily="\Fonts\#Nunito"
                         FontWeight="Light"
-                        Opacity="0.75"
                         Foreground="GhostWhite"
-                        Background="Transparent"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center"
                         BorderThickness="0"
                         Padding="0,5"
                         Margin="0,10,0,0"
                         FontSize="12"
-                        Click="LoginClick"/>
+                        Click="LoginClick"
+                        Style="{StaticResource TextButton}">
+                    
+                </Button>
             </Grid>
         </Grid>
     </Grid>

@@ -58,7 +58,7 @@ namespace PasswordManager.MVVM.View
                         usernameExists = (count > 0);
                     }
 
-                    // Tjekker om mailen er i 
+                    // Tjekker om mailen er i databasen
                     // Samme som ovenfor, men med email
                     using (SqlCommand command = new SqlCommand("SELECT COUNT(*) FROM [User] WHERE Email = @Email", con))
                     {
