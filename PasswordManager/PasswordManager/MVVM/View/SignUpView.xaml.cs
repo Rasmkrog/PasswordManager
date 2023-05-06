@@ -101,7 +101,7 @@ namespace PasswordManager.MVVM.View
                             // Parameter @Username's værdi sættes til usernameText - osv.
                         command.Parameters.AddWithValue("@Username", usernameText);
                         command.Parameters.AddWithValue("@Email", emailText);
-                        command.Parameters.AddWithValue("@HashedPassword", passwordText);
+                        command.Parameters.AddWithValue("@HashedPassword", HashedPassword);
                         command.ExecuteNonQuery();
                     }
                         // Besked om at bruger er oprettet
