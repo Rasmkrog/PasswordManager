@@ -1,0 +1,40 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:PasswordManager">
+    
+    <!-- Navnet, key'en, man skal kalde & hvilken type element -->
+    <Style x:Key="TextButton" TargetType="Button">
+        <!-- Standart værdi af knap -->
+        <Setter Property="Background" Value="Transparent" />
+        <!-- Oprettelse af template -->
+        <Setter Property="Template">
+            <Setter.Value>
+                <!-- Kan kontrollere templaten, attribute TargetType referer til `Button` -->
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <!-- Button baggrund = border baggrund -->
+                    <Border Background="{TemplateBinding Background}"
+                            BorderThickness="0.5">
+                        <!-- Viser knappen | Præsentere knappen -->
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalAlignment}" />
+                    </Border>
+                    <!-- Definer hvad kan ændre knappen -->
+                    <ControlTemplate.Triggers>
+                        <!-- Når cursoren holdes over knappen, "true" indikere at cursoren holdes over -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <!-- Vælger at baggrunden må ændres -->
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <!-- Ændre baggrundsfarve og synlighed -->
+                                    <SolidColorBrush Color="DarkSlateBlue" Opacity="0.35" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>
