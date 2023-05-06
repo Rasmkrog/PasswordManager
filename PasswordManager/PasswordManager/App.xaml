@@ -33,10 +33,6 @@
                 <view:PasswordGenView/>
             </DataTemplate>
             
-            <DataTemplate DataType="{x:Type viewModel:UserViewModel}">
-                <view:UserView/>
-            </DataTemplate>
-            
             <DataTemplate DataType="{x:Type viewModel:SignUpViewModel}">
                 <view:SignUpView/>
             </DataTemplate>
