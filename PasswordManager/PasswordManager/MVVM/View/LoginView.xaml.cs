@@ -41,8 +41,11 @@ namespace PasswordManager.MVVM.View
 
                 if (reader.HasRows)
                 {
-                    UserInfo.UserID = int.Parse(reader.GetString("UserID"));
-                    ToMainWindow();
+                    if (reader.Read())
+                    {
+                        UserInfo.UserID = reader.GetInt32(reader.GetOrdinal("UserID"));
+                        ToMainWindow();
+                    }
                 }
                 else
                 {
@@ -54,9 +57,9 @@ namespace PasswordManager.MVVM.View
             }   // Fejlbesked
             catch (Exception exception)
             {
-                MessageBox.Show("Connection failed: " + exception.Message, "Error", MessageBoxButton.OK,
-                    MessageBoxImage.Error);
+                MessageBox.Show("Exception: " + exception.GetType().Name + "\nMessage: " + exception.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
             finally
             {
                 con.Close();
