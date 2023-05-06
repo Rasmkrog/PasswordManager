@@ -21,14 +21,16 @@ public partial class PasswordGenView : UserControl
         private const string UppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         private const string DigitChars = "0123456789";
         private const string SpecialChars = "!@#$%^&*()_+-=[]{}|;':\",./<>?";
+        private const string Startlowerchars = "abcdefghijklmnopqrstuvwxyz";
 
         public static string Generate(int length, bool includeLowercase, bool includeUppercase, bool includeDigits, bool includeSpecialChars)
         {
             
                 //en tom variabel som bliver lavet 
-            var allowedChars = "";
+            var allowedChars = Startlowerchars + "";
 
                 // hvis IncludeLowercase bliver valgt så skal den med i allowedchars
+            
             if (includeLowercase)
             {
                 allowedChars += LowercaseChars;
@@ -48,6 +50,7 @@ public partial class PasswordGenView : UserControl
             {
                 allowedChars += SpecialChars;
             }
+            
             
             // Opretter en char array til at holde resultatet
             var result = new char[length];
