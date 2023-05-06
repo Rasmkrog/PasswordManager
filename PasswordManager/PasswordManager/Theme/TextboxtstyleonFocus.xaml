@@ -29,7 +29,7 @@
                         </Trigger>
                         <Trigger Property="IsFocused" Value="true">
                             <Setter TargetName="border" Property="BorderBrush" Value="Transparent" />
-                            <Setter TargetName="border" Property="BorderThickness" Value="1" />
+                            <Setter TargetName="border" Property="BorderThickness" Value="0" />
                             <Setter Property="CaretBrush" Value="White"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
