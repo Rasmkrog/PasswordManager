@@ -10,6 +10,8 @@ public class MainViewModel : ObservableObject
     public RelayCommand PasswordGenViewCommand { get; }
     public RelayCommand SecuritycheckViewCommand { get; }
     
+    public RelayCommand NavigateToPass { get;  }
+    
     
     public HomeViewModel HomeVm {get; set;}
     public AddPasswordViewModel AddPasswordVm {get; set;}
@@ -17,6 +19,8 @@ public class MainViewModel : ObservableObject
     public PasswordGenViewModel PasswordGenVm {get; set;}
 
     public SecuritycheckViewModel SecuritycheckVm { get; set; }
+    
+    
     
     
     
