@@ -12,6 +12,8 @@
                 <ResourceDictionary Source="Theme/NavBarButton.xaml"/>
                 <ResourceDictionary Source="Theme/TextboxTheme.xaml"/>
                 <ResourceDictionary Source="Theme/PasswordBoxTemplate.xaml"/>
+                <ResourceDictionary Source="Theme/TextboxtstyleonFocus.xaml"/>
+                <ResourceDictionary Source="Theme/DictionaryContainingScrollbarStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             
             

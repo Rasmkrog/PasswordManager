@@ -19,16 +19,13 @@
     <Window.DataContext>
         <viewModel:MainViewModel/>
     </Window.DataContext>
-    <Window.Resources>
-        
-    </Window.Resources>
     
     
     
     <Border Background="#272537"
             BorderThickness="0,0,0,0"
             CornerRadius="20">
-        <Grid ShowGridLines="True">
+        <Grid>
             <Grid.Resources>
                 <Style x:Key="StackPanelStyle" TargetType="StackPanel">
                     <Setter Property="Orientation" Value="Vertical" />
@@ -50,16 +47,18 @@
                 HorizontalAlignment="Left"
                 Margin="20,0,0,0"
                 Foreground="White"
-                FontSize="20"/>
+                FontSize="28"
+                FontWeight="ExtraBold"
+                FontFamily="\Fonts\#Nunito"/>
             
                 <StackPanel Grid.Row="1" Grid.Column="0" Style="{StaticResource StackPanelStyle}">
-                    <Grid ShowGridLines="True">
+                    <Grid >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="110"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <Grid Row="0" ShowGridLines="True" Margin="0,0,0,0">
+                        <Grid Row="0" Margin="0,0,0,0">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
@@ -69,31 +68,38 @@
                             <RadioButton Content="Home" Grid.Row="0"
                                          Height="50"
                                          Foreground="White"
-                                         FontSize="14" 
+                                         FontSize="14"
+                                         FontFamily="\Fonts\#Nunito"
                                          Style="{StaticResource NavbarButtonTheme}"
                                          IsChecked="True"
                                          Command="{Binding HomeViewCommand}"/>
                             <RadioButton Content="Password Generator" Grid.Row="1"
                                          Height="50"
                                          Foreground="White"
-                                         FontSize="14" 
+                                         FontSize="14"
+                                         FontFamily="\Fonts\#Nunito"
                                          Style="{StaticResource NavbarButtonTheme}"
                                          Command="{Binding PasswordGenViewCommand}"/>
                             <RadioButton Content="Add Password" Grid.Row="2"
                                          Height="50"
                                          Foreground="White"
                                          FontSize="14"
+                                         FontFamily="\Fonts\#Nunito"
                                          Style="{StaticResource NavbarButtonTheme}"
                                          Command="{Binding AddPasswordViewCommand}"/>
                             <RadioButton Content="Sign Up" Grid.Row="3" Padding="0,0,0,0"
                                          Height="50"
                                          Foreground="White"
                                          FontSize="14"
+                                         FontFamily="\Fonts\#Nunito"
                                          Style="{StaticResource NavbarButtonTheme}"
                                          Command="{Binding SignUpViewCommand}"/>
                         </Grid>
+                    </Grid>
+                </StackPanel>
                         
-                        <Grid Row="2" ShowGridLines="True">
+                        <!--
+                        <Grid Row="2">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
@@ -102,21 +108,25 @@
                             <Button Content="Settings" Grid.Row="0"
                                          Height="50"
                                          Foreground="White"
-                                         FontSize="14" />
-                                         <!-- Style="{StaticResource }" -->
+                                         FontSize="14" 
+                                         FontFamily="\Fonts\#Nunito"/>
+                            
+                                         < Style="{StaticResource }" 
                             <Button Content="Language" Grid.Row="1"
                                          Height="50"
                                          Foreground="White"
-                                         FontSize="14"/> 
-                                         <!-- Style="{StaticResource }" -->
+                                         FontSize="14"
+                                         FontFamily="\Fonts\#Nunito"/> 
+                                          Style="{StaticResource }" 
                             <Button Content="User" Grid.Row="2"
                                          Height="50"
                                          Foreground="    White"
-                                         FontSize="14"/>
-                                         <!--Style="{StaticResource }"-->
-                        </Grid>
-                    </Grid>
-                </StackPanel>
+                                         FontSize="14"
+                                         FontFamily="\Fonts\#Nunito"/>
+                                         <Style="{StaticResource }"
+                        
+                    </Grid>-->
+                
             
             <TextBlock Grid.Row="0" 
                        Grid.Column="1"

@@ -29,11 +29,12 @@ public partial class HomeView : UserControl
     }
 
     private const string SqlQuery = "SELECT Title, Username, Hashed_Password, Salt, Email, URL, Notes, Date_Of_Creation From Logins WHERE UserID = @UserID";
-    private static int rows = 0;
+    private int _rows;
     
     [Obsolete("Obsolete")]
-    public async static void LoadData(Grid LoginGrid, TextBlock NumberOfLogins, TextBlock loginstext)
+    public async void LoadData(Grid LoginGrid, TextBlock NumberOfLogins, TextBlock loginstext)
     {
+        _rows = 0;
         SqlConnection connection = new SqlConnection(ConnectionString);
         try
         {
@@ -78,11 +79,27 @@ public partial class HomeView : UserControl
                 dateHeader.Text = "Date Created";
                 
                 //Set the font size of each header
-                titleHeader.FontSize = 16;
-                usernameHeader.FontSize = 16;
-                passwordHeader.FontSize = 16;
-                emailHeader.FontSize = 16;
-                dateHeader.FontSize = 16;
+                titleHeader.FontSize = 18;
+                usernameHeader.FontSize = 18;
+                passwordHeader.FontSize = 18;
+                emailHeader.FontSize = 18;
+                dateHeader.FontSize = 18;
+
+                //set the font family of each header
+                titleHeader.FontFamily = new FontFamily("Nunito");
+                usernameHeader.FontFamily = new FontFamily("Nunito");
+                passwordHeader.FontFamily = new FontFamily("Nunito");
+                emailHeader.FontFamily = new FontFamily("Nunito");
+                dateHeader.FontFamily = new FontFamily("Nunito");
+                
+                //set font weight of each header
+                titleHeader.FontWeight = FontWeights.Bold;
+                usernameHeader.FontWeight = FontWeights.Bold;
+                passwordHeader.FontWeight = FontWeights.Bold;
+                emailHeader.FontWeight = FontWeights.Bold;
+                dateHeader.FontWeight = FontWeights.Bold;
+                
+                
                 
                 titleHeader.HorizontalAlignment = HorizontalAlignment.Center;
                 usernameHeader.HorizontalAlignment = HorizontalAlignment.Center;
@@ -97,13 +114,6 @@ public partial class HomeView : UserControl
                 passwordHeader.Foreground = Brushes.White;
                 emailHeader.Foreground = Brushes.White;
                 dateHeader.Foreground = Brushes.White;
-                
-                titleHeader.FontWeight = FontWeights.Bold;
-                usernameHeader.FontWeight = FontWeights.Bold;
-                passwordHeader.FontWeight = FontWeights.Bold;
-                emailHeader.FontWeight = FontWeights.Bold;
-                dateHeader.FontWeight = FontWeights.Bold;
-                
                 
                 //Set the margin of each header
                 titleHeader.Margin = new Thickness(20,0,20,0);
@@ -145,7 +155,7 @@ public partial class HomeView : UserControl
 
                 while (reader.Read())
                 {
-                    rows++;
+                    _rows++;
                     //Create a new row for each login
                     RowDefinition row = new RowDefinition();
                     row.Height = new GridLength(50);
@@ -178,11 +188,24 @@ public partial class HomeView : UserControl
                     date.Text = reader.GetDateTime("Date_Of_Creation").ToShortDateString().ToString(CultureInfo.CurrentCulture);
                     
                     //Set the font size of each TextBlock
-                    title.FontSize = 14;
-                    username.FontSize = 14;
-                    password.FontSize = 14;
-                    email.FontSize = 14;
-                    date.FontSize = 14;
+                    title.FontSize = 16;
+                    username.FontSize = 16;
+                    password.FontSize = 16;
+                    email.FontSize = 16;
+                    date.FontSize = 16;
+                    
+                    title.FontFamily = new FontFamily("Nunito");
+                    username.FontFamily = new FontFamily("Nunito");
+                    password.FontFamily = new FontFamily("Nunito");
+                    email.FontFamily = new FontFamily("Nunito");
+                    date.FontFamily = new FontFamily("Nunito");
+                
+                    //set font weight of each textblock
+                    title.FontWeight = FontWeights.Medium;
+                    username.FontWeight = FontWeights.Medium;
+                    password.FontWeight = FontWeights.Medium;
+                    email.FontWeight = FontWeights.Medium;
+                    date.FontWeight = FontWeights.Medium;
                     
                     
                     //Set the font color of each TextBlock
@@ -230,14 +253,14 @@ public partial class HomeView : UserControl
                     Grid.SetColumn(date, 5);
                     LoginGrid.Children.Add(date);
                 }
-                if (rows-1 == 1)
+                if (_rows-1 == 1)
                 {
-                    NumberOfLogins.Text = $"{rows + 1}"; 
+                    NumberOfLogins.Text = $"{_rows + 1}"; 
                     loginstext.Text = "login";
                 }
                 else
                 {
-                    NumberOfLogins.Text = $"{rows--}";
+                    NumberOfLogins.Text = $"{_rows--}";
                     loginstext.Text = "logins";
                 }
                 
