@@ -25,7 +25,7 @@ namespace PasswordManager.MVVM.View
         private bool emailExists = false;
 
         // Kaldes når "Opret Bruger" knappen trykkes
-        private void OpretBruger_Click(object sender, RoutedEventArgs e)
+        private async void OpretBruger_Click(object sender, RoutedEventArgs e)
         {
             // Variabel værdi nustilles
             count = 0;
@@ -102,13 +102,45 @@ namespace PasswordManager.MVVM.View
                         command.Parameters.AddWithValue("@Username", usernameText);
                         command.Parameters.AddWithValue("@Email", emailText);
                         command.Parameters.AddWithValue("@HashedPassword", passwordText);
-                        command.ExecuteNonQuery();
                     }
                         // Besked om at bruger er oprettet
                     MessageBox.Show("Bruger oprettet!");
                         // Sender bruger til Main Window
                     ToHomeView();
                 }
+                
+                // Hashed Password
+                using (SqlConnection con2 = new SqlConnection(ConnectionString))
+                {
+                    con2.Open();
+                    SqlCommand command2 =
+                        new SqlCommand(
+                            "SELECT UserID FROM [User] WHERE Username = @Username AND Hashed_Password = @HashedPassword",
+                            con2);
+                    
+                        command2.Parameters.AddWithValue("@Username", usernameText);
+                        command2.Parameters.AddWithValue("@HashedPassword", HashedPassword);
+                        
+                        // SQL data reader, læser data asynkront fra resten af koden
+                        SqlDataReader reader = await command2.ExecuteReaderAsync();
+
+                        // Finder ud af om der er rækker som udfylder betingelserne
+                        if (reader.HasRows)
+                        {
+                            // Sikre sig kun at læse en række, når der er rækker at læse
+                            if (reader.Read())
+                            {
+                                // Læser rækkens UserID, laves til integer
+                                UserInfo.UserID = reader.GetInt32(reader.GetOrdinal("UserID"));
+                            }
+                        }
+                        else    // Hvis kode eller brugernavn er forkert
+                        {       // Fejl-besked om forkert login
+                            MessageBox.Show("Username or password invalid or incorrect:" , "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                        await reader.CloseAsync();
+                        ToHomeView();
+                    }
             }
                 // Fejl-beskeder
             catch (SqlException ex)
