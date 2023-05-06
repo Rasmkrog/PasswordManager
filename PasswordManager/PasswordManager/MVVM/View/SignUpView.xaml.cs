@@ -35,11 +35,18 @@ namespace PasswordManager.MVVM.View
             try
             {
                     // Indsætter text fra textboxe i variabler
+                Sha256script sh = new Sha256script(); 
+
                 string usernameText = Brugernavn.Text;
                 string emailText = Email.Text;
                 string passwordText = Kodeord.Text;
 
-                    // Tjekker om brugernavn eller mail allerede er i databasen
+                UserInfo.Password = passwordText;
+                UserInfo.UserName = usernameText;
+
+                string HashedPassword = sh.ShAencryption(passwordText);
+
+                // Tjekker om brugernavn eller mail allerede er i databasen
                 using (SqlConnection con = new SqlConnection(ConnectionString))
                 {
                     con.Open();

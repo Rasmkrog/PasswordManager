@@ -3,9 +3,9 @@ using System.Security.Cryptography;
 using System.Text;
 namespace PasswordManager.Core;
 
-public class Sha256
+public class Sha256script
 {
-    private static string ShAencryption(string password)
+    public string ShAencryption(string password)
     {
         byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
 
