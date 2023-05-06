@@ -16,6 +16,7 @@ namespace PasswordManager.MVVM.View
         public SignUpView()
         {
             InitializeComponent();
+            Brugernavn.Focus();
         }
 
         // Oprettelse af variabler
@@ -26,32 +27,39 @@ namespace PasswordManager.MVVM.View
         // Kaldes når "Opret Bruger" knappen trykkes
         private void OpretBruger_Click(object sender, RoutedEventArgs e)
         {
-            // Default værdier til variabler
+            // Variabel værdi nustilles
             count = 0;
             emailExists = false;
             usernameExists = false;
 
             try
             {
-                // Indsætter text fra textboxe i variabler
+                    // Indsætter text fra textboxe i variabler
                 string usernameText = Brugernavn.Text;
                 string emailText = Email.Text;
                 string passwordText = Kodeord.Text;
 
-                // Tjekker om brugernavn eller mail allerede er i databasen
+                    // Tjekker om brugernavn eller mail allerede er i databasen
                 using (SqlConnection con = new SqlConnection(ConnectionString))
                 {
                     con.Open();
 
-                    // Tjekker om brugernavnet er i databasen
+                        // Tjekker om brugernavnet er i databasen
                     using (SqlCommand command = new SqlCommand("SELECT COUNT(*) FROM [User] WHERE Username = @Username", con))
                     {
+                            // Parameteren @Username's værdi sættes til usernameText
                         command.Parameters.AddWithValue("@Username", usernameText);
+                            // Gennem 'command' hentes antallet af rækker som er kørt igennem.
+                            // 'COUNT (*)' gør at vi kun kan hente 1 række, men det er ok da-
+                            // - vi brugere ikke kan have samme navn
                         count = (int)command.ExecuteScalar();
+                            // Hvis count > 0, findes brugeren allerede
+                            // Bool 'usernameExists' sættes til 'true'
                         usernameExists = (count > 0);
                     }
 
-                    // Tjekker om mailen er i databasen
+                    // Tjekker om mailen er i 
+                    // Samme som ovenfor, men med email
                     using (SqlCommand command = new SqlCommand("SELECT COUNT(*) FROM [User] WHERE Email = @Email", con))
                     {
                         command.Parameters.AddWithValue("@Email", emailText);
@@ -60,7 +68,7 @@ namespace PasswordManager.MVVM.View
                     }
                 }
 
-                // Error message hvis brugernavn eller mail er i databasen
+                    // Error message hvis brugernavn eller mail er i databasen
                 if (usernameExists)
                 {
                     MessageBox.Show("Username already exists. Please choose a different username.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -72,27 +80,30 @@ namespace PasswordManager.MVVM.View
                     Refresh();
                 }
 
-                // Indsætter ny brugers data i databasen
+                    // Indsætter ny brugers data i databasen
                 string insertQuery = "INSERT INTO [User] (Username, Email, Hashed_Password, DateOfOprettelse) VALUES (@Username, @Email, @HashedPassword, GETDATE())";
 
+                    // Ny forbindelse til databasen skabes
                 using (SqlConnection con = new SqlConnection(ConnectionString))
                 {
+                        // Forbindelsen åbnes
                     con.Open();
-
+                        // Ny SQL command skabes
                     using (SqlCommand command = new SqlCommand(insertQuery, con))
                     {
+                            // Parameter @Username's værdi sættes til usernameText - osv.
                         command.Parameters.AddWithValue("@Username", usernameText);
                         command.Parameters.AddWithValue("@Email", emailText);
                         command.Parameters.AddWithValue("@HashedPassword", passwordText);
                         command.ExecuteNonQuery();
                     }
-                    // Besked om at bruger er oprettet
+                        // Besked om at bruger er oprettet
                     MessageBox.Show("Bruger oprettet!");
-                    // Sender bruger til Main Window
+                        // Sender bruger til Main Window
                     ToHomeView();
                 }
             }
-            // Fejl-beskeder
+                // Fejl-beskeder
             catch (SqlException ex)
             {
                 MessageBox.Show(ex.Message, "SQL Error", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -103,24 +114,31 @@ namespace PasswordManager.MVVM.View
             }
         }
 
-        // genindlæser siden, så alt bliver genskabt
+            // genindlæser siden, så alt bliver genskabt
         private void Refresh()
         {
+                // Instans af SignUpView
             SignUpView signUpView = new SignUpView();
+                // Denne side bliver til SignUpView
             this.Content = signUpView;
         }
         
-        // Sender brugeren til index
+            // Sender brugeren til index
         private void ToHomeView()
         {
+                // Instans af MainWindow
             MainWindow mw = new MainWindow();
+                // Brugeren føres til MainWindow
             mw.Show();
             this.Close();
         }
         
+            // Hentes når login-knappen trykkes
         private void LoginClick(object sender, RoutedEventArgs e)
         {
+                // Instans af LoginView
             LoginView LW = new LoginView();
+                // Brugeren føres til LoginView
             LW.Show();
             this.Close();
         }

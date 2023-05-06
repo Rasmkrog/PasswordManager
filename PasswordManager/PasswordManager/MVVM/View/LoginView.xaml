@@ -62,7 +62,7 @@
                  Name="kodeord"
                  VerticalAlignment="Bottom"
                  HorizontalAlignment="Center"
-                 IsHitTestVisible="False"
+                 IsHitTestVisible="True"
                  Width="200"
                  Height="40"
                  Text=""
