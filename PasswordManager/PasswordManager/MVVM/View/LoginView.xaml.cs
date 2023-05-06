@@ -33,8 +33,7 @@ namespace PasswordManager.MVVM.View
             {
                 con.Open();
                     // Instans af 'SQL command', læser Username og Hashed_Password
-                SqlCommand command = new SqlCommand(
-                    "SELECT UserID, Username, Hashed_Password From [User] WHERE Username = @Username AND Hashed_Password = @Hashed_Password",
+                SqlCommand command = new SqlCommand("SELECT UserID, Username, Hashed_Password From [User] WHERE Username = @Username AND Hashed_Password = @Hashed_Password",
                     con);
                     // Sætter @Username's værdi til UserInfo.Username
                 command.Parameters.AddWithValue("@Username", UserInfo.UserName);

@@ -102,11 +102,11 @@ namespace PasswordManager.MVVM.View
                         command.Parameters.AddWithValue("@Username", usernameText);
                         command.Parameters.AddWithValue("@Email", emailText);
                         command.Parameters.AddWithValue("@HashedPassword", passwordText);
+                        command.ExecuteNonQuery();
                     }
                         // Besked om at bruger er oprettet
                     MessageBox.Show("Bruger oprettet!");
                         // Sender bruger til Main Window
-                    ToHomeView();
                 }
                 
                 // Hashed Password
