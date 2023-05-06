@@ -95,18 +95,30 @@
                            Padding="0,0,0,5"/>
                 
                 <!-- Brugernavn box-->
-                <TextBox Grid.Row="1"
-                         Name="Brugernavn"
-                         VerticalAlignment="Center"
-                         HorizontalAlignment="Center"
-                         Margin="0,0,0,10"
-                         Width="200"
-                         Height="30"
-                         Text=""
-                         FontSize="14"
-                         FontFamily="\Fonts\#Nunito"
-                         FontWeight="Medium"
-                         Style="{StaticResource LoginTextBox}"/>
+                <Border Grid.Row="1"
+                        BorderBrush="GhostWhite"
+                        Background="#353340"
+                        BorderThickness="1"
+                        CornerRadius="10"
+                        Margin="10,0,10,10"
+                        Width="300">
+                    <TextBox Name="Brugernavn"
+                             VerticalAlignment="Center"
+                             HorizontalAlignment="Center"
+                             VerticalContentAlignment="Center"
+                             Background="Transparent"
+                             Foreground="White"
+                             BorderThickness="0"
+                             BorderBrush="Transparent"
+                             Padding="20,0,10,0"
+                             Text=""
+                             FontSize="14"
+                             FontFamily="\Fonts\#Nunito"
+                             FontWeight="Medium"
+                             Width="300"
+                             Height="30"
+                             Style="{StaticResource Input}"/>
+                </Border>
             </Grid>
             
             <!-- Grid til at have kodeord-->
@@ -129,18 +141,34 @@
                             
                 
                 <!-- Kodeord box -->
-                <TextBox Grid.Row="1"
-                         Name="Kodeord"
-                         VerticalAlignment="Center"
-                         HorizontalAlignment="Center"
-                         Margin="0,0,0,10"
-                         Width="200"
-                         Height="30"
-                         Text=""
-                         FontSize="14"
-                         FontFamily="\Fonts\#Nunito"
-                         FontWeight="Medium"
-                         Style="{StaticResource LoginTextBox}"/>
+                <Border Grid.Row="1"
+                        BorderBrush="GhostWhite"
+                        Background="#353340"
+                        BorderThickness="1"
+                        CornerRadius="10"
+                        Margin="10,0,10,10"
+                        Width="300">
+                    <TextBox 
+                             Name="Kodeord"
+                             VerticalAlignment="Center"
+                             HorizontalAlignment="Center"
+                                VerticalContentAlignment="Center"
+                             IsHitTestVisible="True"
+                             
+                             Background="Transparent"
+                             Foreground="White"
+                             BorderThickness="0"
+                             BorderBrush="Transparent"
+                             Padding="20,0,10,0"
+                             
+                             Width="300"
+                             Height="30"
+                             Text=""
+                             FontSize="14"
+                             FontFamily="\Fonts\#Nunito"
+                             FontWeight="Medium"
+                             Style="{StaticResource Input}"/>
+                </Border>
             </Grid>
             
             <Grid Grid.Row="3" Margin="0,0,0,20">
@@ -160,17 +188,31 @@
                            Padding="0,0,0,5"/>
                 
                 <!-- Email box -->
-                <TextBox Grid.Row="1"
-                         Name="Email"
-                         VerticalAlignment="Center"
-                         HorizontalAlignment="Center"
-                         Width="200"
-                         Height="30"
-                         Text=""
-                         FontSize="14"
-                         FontFamily="\Fonts\#Nunito"
-                         FontWeight="Medium"
-                         Style="{StaticResource LoginTextBox}"/>
+                <Border Grid.Row="1" 
+                        BorderBrush="GhostWhite"
+                        Background="#353340"
+                        BorderThickness="1"
+                        CornerRadius="10"
+                        Margin="10,0,10,0"
+                        Width="300">
+                    <TextBox Name="Email"
+                             VerticalAlignment="Center"
+                             HorizontalAlignment="Center"
+                             VerticalContentAlignment="Center"
+                             Background="Transparent"
+                             Foreground="White"
+                             BorderThickness="0"
+                             BorderBrush="Transparent"
+                             Padding="20,0,10,0"
+                             Text=""
+                             FontSize="14"
+                             FontFamily="\Fonts\#Nunito"
+                             FontWeight="Medium"
+                             Width="300"
+                             Height="30"
+                             Style="{StaticResource Input}"/>
+                    
+                </Border>
             </Grid>
             
             <Grid Grid.Row="4">
