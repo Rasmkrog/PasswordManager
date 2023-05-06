@@ -9,141 +9,170 @@
              Background="Transparent">
     <Grid ShowGridLines="true"
           Background="#272537">
-        <Grid.ColumnDefinitions>    
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>    
         <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
-        <!-- Frame navn man kan referere til -->
-        <Frame Name="SignUp_View"/>
-        
-        <!-- Logo -->
-        <Image Grid.Row="0"
-               Grid.Column="1"
-               Grid.ColumnSpan="2"
-               HorizontalAlignment="Center"
-               VerticalAlignment="Center"
-               Source="/Billeder/funny image.png"
-               Stretch="none"
-               Height="40"></Image>
-        <!-- Sign up titel-->
-        <TextBlock Grid.Column="1"
-                   Grid.ColumnSpan="2"
-                   Grid.Row="0"
-                   Grid.RowSpan="2"
-                   Text="Sign up"
-                   FontSize="20"
-                   FontWeight="Bold"
-                   Foreground="GhostWhite"
+       
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <!-- Logo -->
+            <Image Grid.Row="0"
+                   HorizontalAlignment="Center"
                    VerticalAlignment="Center"
-                   HorizontalAlignment="Center"/>
-                   
-        <!-- Brugernavn box-->
-        <TextBox Grid.Row="1"
-                 Grid.Column="1"
-                 Grid.ColumnSpan="2"
-                 Name="Brugernavn"
-                 VerticalAlignment="Bottom"
-                 HorizontalAlignment="Center"
-                 Width="200"
-                 Height="40"
-                 Margin="0,0,0,10"
-                 Text=""
-                 Style="{StaticResource LoginTextBox}"/>
-        <!-- Kodeord box -->
-        <TextBox Grid.Row="2"
-                 Grid.Column="1"
-                 Grid.ColumnSpan="2"
-                 Name="Kodeord"
-                 VerticalAlignment="Center"
-                 HorizontalAlignment="Center"
-                 Width="200"
-                 Height="40"
-                 Text=""
-                 Style="{StaticResource LoginTextBox}"/>
-        <!-- Email box -->
-        <TextBox Grid.Row="3"
-                 Grid.Column="1"
-                 Grid.ColumnSpan="2"
-                 Name="Email"
-                 VerticalAlignment="Center"
-                 HorizontalAlignment="Center"
-                 Margin="0,0,0,10"
-                 Width="200"
-                 Height="40"
-                 Text=""
-                 Style="{StaticResource LoginTextBox}"/>
-        <!-- Opret bruger box-->
-        <Button Grid.Row="3"
-                Grid.RowSpan="2"
-                Grid.Column="1"
-                Grid.ColumnSpan="2"
+                   Source="/Billeder/funny image.png"
+                   Stretch="none"
+                   Height="40"
+                   Margin="0,20,0,0"
+                   />
+            <!-- Sign up titel-->
+            <TextBlock Grid.Row="1" Text="Sign up"
+                FontSize="32"
+                FontWeight="ExtraBlack"
+                Foreground="GhostWhite"
+                FontFamily="\Fonts\#Nunito"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center"
-                Height="35"
-                Width="120"
-                Foreground="GhostWhite"
-                Background="#353340"
-                FontSize="14"
-                BorderThickness="1"
-                BorderBrush="GhostWhite"
-                Content="Opret Bruger"
-                Click="OpretBruger_Click"/>
-        
-        <!-- Brugernavn tekst -->
-        <TextBlock Grid.Row="1"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="2"
-                   Text="Brugernavn:"
-                   FontFamily="\Fonts\#Nunito"
-                   FontWeight="Medium"
-                   FontSize="20"
-                   Foreground="White"
-                   Margin="0,0,0,20"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Bottom"/>
-        <!-- Kodeord tekst -->
-        <TextBlock Grid.Row="2"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="2"
-                   Text="Kodeord:"
-                   FontFamily="\Fonts\#Nunito"
-                   FontWeight="Medium"
-                   FontSize="20"
-                   Foreground="White"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"/>
-        <!-- Email tekst -->
-        <TextBlock Grid.Row="3" 
-                   Grid.Column="0"
-                   Grid.ColumnSpan="2"
-                   Text="Email:"
-                   FontFamily="\Fonts\#Nunito"
-                   FontWeight="Medium"
-                   FontSize="20"
-                   Foreground="White"
-                   Margin="0,0,0,10"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"/>
-        <!-- "Login"-text - restyled knap -->
-        <Button Grid.Row="4"
-                Grid.Column="1"
-                Grid.ColumnSpan="2"
-                Content="Her du allerede en bruger? Login her :)"
-                Foreground="GhostWhite"
-                Background="Transparent"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                BorderThickness="0"
-                Click="LoginClick"/>
+                Padding="15"
+                />
+        </Grid>
+        <!-- Grid til at have forms-->
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <!-- Grid til at have brugernavn-->
+            <Grid Row="0" Margin="0,5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                <!-- Brugernavn tekst -->
+                <TextBlock Grid.Row="0"
+                           Text="Brugernavn:"
+                           FontFamily="\Fonts\#Nunito"
+                           FontWeight="Medium"
+                           FontSize="20"
+                           Foreground="White"
+                           Margin="0,0,0,5"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Bottom"
+                           Padding="0,5,0,0"/>
+                
+                <!-- Brugernavn box-->
+                <TextBox Grid.Row="1"
+                         Name="Brugernavn"
+                         VerticalAlignment="Bottom"
+                         HorizontalAlignment="Center"
+                         Width="200"
+                         Height="30"
+                         Margin="0,0,0,10"
+                         Text=""
+                         Style="{StaticResource LoginTextBox}"/>
+            </Grid>
+            
+            <!-- Grid til at have kodeord-->
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                <!-- Kodeord tekst -->
+                <TextBlock Grid.Row="0"
+                           Text="Kodeord:"
+                           FontFamily="\Fonts\#Nunito"
+                           FontWeight="Medium"
+                           FontSize="20"
+                           Foreground="White"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Padding="0,5,0,0"/>
+                            
+                
+                <!-- Kodeord box -->
+                <TextBox Grid.Row="1"
+                         Name="Kodeord"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Center"
+                         Width="200"
+                         Height="30"
+                         Text=""
+                         Style="{StaticResource LoginTextBox}"/>
+            </Grid>
+            
+            <Grid Grid.Row="3" Margin="0,5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <!-- Email tekst -->
+                <TextBlock Grid.Row="0" 
+                           Text="Email:"
+                           FontFamily="\Fonts\#Nunito"
+                           FontWeight="Medium"
+                           FontSize="20"
+                           Foreground="White"
+                           Margin="0,0,0,10"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Padding="0,5,0,0"/>
+                
+                <!-- Email box -->
+                <TextBox Grid.Row="1"
+                         
+                         Name="Email"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Center"
+                         Margin="0,0,0,10"
+                         Width="200"
+                         Height="30"
+                         Text=""
+                         Style="{StaticResource LoginTextBox}"/>
+            </Grid>
+            
+            <Grid Grid.Row="4">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <!-- Opret bruger box-->
+                <Button Grid.Row="0"
+                        
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Height="35"
+                        Width="120"
+                        Foreground="GhostWhite"
+                        Background="#353340"
+                        FontSize="14"
+                        BorderThickness="1"
+                        BorderBrush="GhostWhite"
+                        Content="Opret Bruger"
+                        Click="OpretBruger_Click"/>
+                <!-- "Login"-text - restyled knap -->
+                <Button Grid.Row="1"
+                        Content="Her du allerede en bruger? Login her :)"
+                        FontFamily="\Fonts\#Nunito"
+                        FontWeight="Light"
+                        Opacity="0.75"
+                        Foreground="GhostWhite"
+                        Background="Transparent"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        BorderThickness="0"
+                        Padding="0,5,0,0"
+                        FontSize="10"
+                        Click="LoginClick"/>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>

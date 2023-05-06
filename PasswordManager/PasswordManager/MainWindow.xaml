@@ -87,13 +87,6 @@
                                          FontFamily="\Fonts\#Nunito"
                                          Style="{StaticResource NavbarButtonTheme}"
                                          Command="{Binding AddPasswordViewCommand}"/>
-                            <RadioButton Content="Sign Up" Grid.Row="3" Padding="0,0,0,0"
-                                         Height="50"
-                                         Foreground="White"
-                                         FontSize="14"
-                                         FontFamily="\Fonts\#Nunito"
-                                         Style="{StaticResource NavbarButtonTheme}"
-                                         Command="{Binding SignUpViewCommand}"/>
                         </Grid>
                     </Grid>
                 </StackPanel>

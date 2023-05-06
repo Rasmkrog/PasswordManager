@@ -32,8 +32,9 @@ public partial class HomeView : UserControl
     private int _rows;
     
     [Obsolete("Obsolete")]
-    public async void LoadData(Grid LoginGrid, TextBlock NumberOfLogins, TextBlock loginstext)
+    public async void LoadData(Grid? LoginGrid, TextBlock? NumberOfLogins, TextBlock? loginstext)
     {
+        
         _rows = 0;
         SqlConnection connection = new SqlConnection(ConnectionString);
         try
