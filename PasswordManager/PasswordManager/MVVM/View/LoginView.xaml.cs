@@ -13,16 +13,20 @@ namespace PasswordManager.MVVM.View
 {
     public partial class LoginView : Window
     {
+        // Initialisering af kode
         public LoginView()
         {
             InitializeComponent();
         }
         
+        // Bliver kaldt hvis Login-knappen trykkes
         private async void Login_Click(object sender, RoutedEventArgs e)
         {
+            // Indsætter text fra textboxe i variabler i UserInfo
             UserInfo.UserName = brugernavn.Text;
             UserInfo.Password = kodeord.Text;
 
+            // Instans af forbindelse til databasen
             SqlConnection con = new SqlConnection(ConnectionString);
             try
             {
@@ -38,6 +42,7 @@ namespace PasswordManager.MVVM.View
                 if (reader.HasRows)
                 {
                     UserInfo.UserID = int.Parse(reader.GetString("UserID"));
+                    ToMainWindow();
                 }
                 else
                 {
@@ -46,7 +51,7 @@ namespace PasswordManager.MVVM.View
                 }
                 await reader.CloseAsync();
                 
-            }
+            }   // Fejlbesked
             catch (Exception exception)
             {
                 MessageBox.Show("Connection failed: " + exception.Message, "Error", MessageBoxButton.OK,
@@ -57,21 +62,28 @@ namespace PasswordManager.MVVM.View
                 con.Close();
             }
         }
-        
-        
+
+        // Sender brugeren til Sign Up siden
+        private void SignUpClick(object sender, RoutedEventArgs e)
+        {
+            SignUpView signUpView = new SignUpView();
+            signUpView.Show();
+            this.Close();
+        }
+
         // Sender brugeren til index
-        private void ToHomeView()
+        private void ToMainWindow()
         {
             MainWindow MV = new MainWindow();
             MV.Show();
             this.Close();
         }
 
-        // genindlæser siden, så alt bliver genskabt
+        // Genindlæser siden, så alt bliver genskabt
         private void Refresh()
         {
-            SignUpView signUpView = new SignUpView();
-            //signUpView.Show();
+            LoginView LV = new LoginView();
+            LV.Show();
             this.Close();
         }
     }

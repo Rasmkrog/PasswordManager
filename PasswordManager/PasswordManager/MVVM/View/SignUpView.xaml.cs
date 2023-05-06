@@ -10,18 +10,20 @@ using static PasswordManager.Core.DBConnection;
 
 namespace PasswordManager.MVVM.View
 {
-    public partial class SignUpView : UserControl
+    public partial class SignUpView : Window
     {
+        // Initialisering af side
         public SignUpView()
         {
             InitializeComponent();
         }
 
+        // Oprettelse af variabler
         private int count = 0;
         private bool usernameExists = false;
         private bool emailExists = false;
 
-        // 
+        // Kaldes når "Opret Bruger" knappen trykkes
         private void OpretBruger_Click(object sender, RoutedEventArgs e)
         {
             // Default værdier til variabler
@@ -31,6 +33,7 @@ namespace PasswordManager.MVVM.View
 
             try
             {
+                // Indsætter text fra textboxe i variabler
                 string usernameText = Brugernavn.Text;
                 string emailText = Email.Text;
                 string passwordText = Kodeord.Text;
@@ -107,8 +110,16 @@ namespace PasswordManager.MVVM.View
         // Sender brugeren til index
         private void ToHomeView()
         {
-            HomeView homeView = new HomeView();
-            this.Content = homeView;
+            MainWindow mw = new MainWindow();
+            mw.Show();
+            this.Close();
+        }
+        
+        private void LoginClick(object sender, RoutedEventArgs e)
+        {
+            LoginView LW = new LoginView();
+            LW.Show();
+            this.Close();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="PasswordManager.MVVM.View.SignUpView"
+﻿<Window x:Class="PasswordManager.MVVM.View.SignUpView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -23,6 +23,7 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         
+        <!-- Frame navn man kan referere til -->
         <Frame Name="SignUp_View"/>
         
         <!-- Logo -->
@@ -37,7 +38,8 @@
         <!-- Sign up titel-->
         <TextBlock Grid.Column="1"
                    Grid.ColumnSpan="2"
-                   Grid.Row="1"
+                   Grid.Row="0"
+                   Grid.RowSpan="2"
                    Text="Sign up"
                    FontSize="20"
                    FontWeight="Bold"
@@ -46,14 +48,15 @@
                    HorizontalAlignment="Center"/>
                    
         <!-- Brugernavn box-->
-        <TextBox Grid.Row="2"
+        <TextBox Grid.Row="1"
                  Grid.Column="1"
                  Grid.ColumnSpan="2"
                  Name="Brugernavn"
-                 VerticalAlignment="Top"
+                 VerticalAlignment="Bottom"
                  HorizontalAlignment="Center"
                  Width="200"
                  Height="40"
+                 Margin="0,0,0,10"
                  Text=""
                  Style="{StaticResource LoginTextBox}"/>
         <!-- Kodeord box -->
@@ -61,7 +64,7 @@
                  Grid.Column="1"
                  Grid.ColumnSpan="2"
                  Name="Kodeord"
-                 VerticalAlignment="Bottom"
+                 VerticalAlignment="Center"
                  HorizontalAlignment="Center"
                  Width="200"
                  Height="40"
@@ -72,9 +75,9 @@
                  Grid.Column="1"
                  Grid.ColumnSpan="2"
                  Name="Email"
-                 VerticalAlignment="Top"
+                 VerticalAlignment="Center"
                  HorizontalAlignment="Center"
-                 Margin="10"
+                 Margin="0,0,0,10"
                  Width="200"
                  Height="40"
                  Text=""
@@ -96,21 +99,51 @@
                 Content="Opret Bruger"
                 Click="OpretBruger_Click"/>
         
-        <!-- Keyhole logo, kodeord -->
-        <Image Grid.Row="2"
-               Grid.Column="1"
-               Source="/Billeder/Keyhole.png"
-               Height="20"
-               VerticalAlignment="Bottom"
-               HorizontalAlignment="Center"
-               Margin="10, 10, 40, 10"/>
-        <!-- Username logo, brugernavn -->
-        <Image Grid.Row="2"
-               Grid.Column="1"
-               Source="/Billeder/username-icon-png-5.jpg"
-               Height="20"
-               VerticalAlignment="Top"
-               HorizontalAlignment="Center"
-               Margin="10, 10, 40, 00"/>
+        <!-- Brugernavn tekst -->
+        <TextBlock Grid.Row="1"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Text="Brugernavn:"
+                   FontFamily="\Fonts\#Nunito"
+                   FontWeight="Medium"
+                   FontSize="20"
+                   Foreground="White"
+                   Margin="0,0,0,20"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom"/>
+        <!-- Kodeord tekst -->
+        <TextBlock Grid.Row="2"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Text="Kodeord:"
+                   FontFamily="\Fonts\#Nunito"
+                   FontWeight="Medium"
+                   FontSize="20"
+                   Foreground="White"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"/>
+        <!-- Email tekst -->
+        <TextBlock Grid.Row="3" 
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Text="Email:"
+                   FontFamily="\Fonts\#Nunito"
+                   FontWeight="Medium"
+                   FontSize="20"
+                   Foreground="White"
+                   Margin="0,0,0,10"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"/>
+        <!-- "Login"-text - restyled knap -->
+        <Button Grid.Row="4"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Content="Her du allerede en bruger? Login her :)"
+                Foreground="GhostWhite"
+                Background="Transparent"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                BorderThickness="0"
+                Click="LoginClick"/>
     </Grid>
-</UserControl>
+</Window>

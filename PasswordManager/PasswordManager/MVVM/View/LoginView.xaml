@@ -84,31 +84,41 @@
                 BorderBrush="GhostWhite"
                 Content="Login"
                 Click="Login_Click"/>
-        <!-- "Lav ny bruger"-text -->
-        <TextBlock Grid.Row="3"
-                   Grid.Column="1"
+        <!-- "Lav ny bruger"-text - restyled knap -->
+        <Button Grid.Row="3"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Content="Her du ikke en bruger? lav en her :)"
+                Foreground="GhostWhite"
+                Background="Transparent"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Center"
+                BorderThickness="0"
+                Click="SignUpClick"/>
+        
+        <!-- Brugernavn tekst -->
+        <TextBlock Grid.Row="2"
+                   Grid.Column="0"
                    Grid.ColumnSpan="2"
-                   Text="Har du ikke en bruger? lav en her :))))"
-                   Foreground="GhostWhite"
-                   Margin="10"
+                   Text="Brugernavn:"
+                   FontFamily="\Fonts\#Nunito"
+                   FontWeight="Medium"
+                   FontSize="20"
+                   Foreground="White"
+                   Margin="0,0,0,20"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"/>
+        <!-- Kodeord tekst -->
+        <TextBlock Grid.Row="2"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Text="Kodeord:"
+                   FontFamily="\Fonts\#Nunito"
+                   FontWeight="Medium"
+                   FontSize="20"
+                   Foreground="White"
+                   Margin="5"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Bottom"/>
-        
-        <!-- Keyhole logo, kodeord -->
-        <Image Grid.Row="2"
-               Grid.Column="1"
-               Source="/Billeder/Keyhole.png"
-               Height="20"
-               VerticalAlignment="Bottom"
-               HorizontalAlignment="Center"
-               Margin="10, 10, 40, 10"/>
-        <!-- Username logo, brugernavn -->
-        <Image Grid.Row="2"
-               Grid.Column="1"
-               Source="/Billeder/username-icon-png-5.jpg"
-               Height="20"
-               VerticalAlignment="Top"
-               HorizontalAlignment="Center"
-               Margin="10, 10, 40, 00"/>
     </Grid>
 </Window>

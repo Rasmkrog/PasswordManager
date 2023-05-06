@@ -20,7 +20,7 @@ namespace PasswordManager
             MainWindow mw = new MainWindow();
             LoginView lv = new LoginView();
             //lv.Show();
-            mw.Show();
+            lv.Show();
             base.OnStartup(e);
 
 
