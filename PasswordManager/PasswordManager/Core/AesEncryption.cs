@@ -6,7 +6,7 @@ namespace PasswordManager.MVVM.Model;
 public class AesEncryption
   {
     [Obsolete("Obsolete")]
-    public static string Encrypt(string text, string password, string salt)
+    public string Encrypt(string text, string password, string salt)
     {
       byte[] bytes = Encoding.Unicode.GetBytes(text);
       byte[] passwordBytes = Encoding.Unicode.GetBytes(password);
