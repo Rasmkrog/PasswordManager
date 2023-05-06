@@ -27,13 +27,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <!-- Logo -->
-            <Image Grid.Row="0"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   Source="/Billeder/funny image.png"
-                   Stretch="none"
-                   Height="40"
-                   Margin="0,20,0,0"/>
+            
             
             <!-- Sign up titel-->
             <TextBlock Grid.Row="1" Text="Sign up"
@@ -116,7 +110,7 @@
                              FontFamily="\Fonts\#Nunito"
                              FontWeight="Medium"
                              Width="300"
-                             Height="30"
+                             Height="40"
                              Style="{StaticResource Input}"/>
                 </Border>
             </Grid>
@@ -162,7 +156,7 @@
                              Padding="20,0,10,0"
                              
                              Width="300"
-                             Height="30"
+                             Height="40"
                              Text=""
                              FontSize="14"
                              FontFamily="\Fonts\#Nunito"
@@ -209,7 +203,7 @@
                              FontFamily="\Fonts\#Nunito"
                              FontWeight="Medium"
                              Width="300"
-                             Height="30"
+                             Height="40"
                              Style="{StaticResource Input}"/>
                     
                 </Border>
