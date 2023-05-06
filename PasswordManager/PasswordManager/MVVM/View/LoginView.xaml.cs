@@ -112,5 +112,10 @@ namespace PasswordManager.MVVM.View
             LV.Show();
             this.Close();
         }
+        
+        private void BtnClickClose(object sender, RoutedEventArgs e)
+        { 
+            Application.Current.Shutdown();
+        }
     }
 }

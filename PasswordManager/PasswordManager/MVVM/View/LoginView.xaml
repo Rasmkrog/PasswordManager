@@ -5,24 +5,28 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:PasswordManager.MVVM.View"
              mc:Ignorable="d"
-             Height="450"
-             Width="800"
-             Background="#272537"
-             d:DesignHeight="450" d:DesignWidth="800">
-     <Grid ShowGridLines="true">
-        <Grid.ColumnDefinitions>    
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>    
-        <Grid.RowDefinitions>    
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
+             WindowStyle="None"
+             ResizeMode="NoResize"
+             WindowStartupLocation="CenterScreen"
+             Background="Transparent"
+             AllowsTransparency="True"
+             Height="600" 
+             Width="920">
+    <Border BorderThickness="0" Background="#272537" CornerRadius="20">
+        <Grid ShowGridLines="true">
+            <Grid.ColumnDefinitions>    
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>    
+            <Grid.RowDefinitions>    
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
         
         <!-- Logo -->
         <Image Grid.Row="0"
@@ -120,5 +124,6 @@
                    Margin="5"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Bottom"/>
-    </Grid>
+        </Grid>
+    </Border>
 </Window>
