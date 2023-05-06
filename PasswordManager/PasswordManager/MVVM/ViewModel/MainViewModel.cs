@@ -7,18 +7,16 @@ public class MainViewModel : ObservableObject
 {
     public RelayCommand HomeViewCommand { get; }
     public RelayCommand AddPasswordViewCommand { get; }
-    public RelayCommand LoginViewCommand { get; }
     public RelayCommand PasswordGenViewCommand { get; }
-    public RelayCommand UserViewCommand { get;}
-    public RelayCommand SignUpViewCommand { get; }
+    public RelayCommand SecuritycheckViewCommand { get; }
     
     
     public HomeViewModel HomeVm {get; set;}
     public AddPasswordViewModel AddPasswordVm {get; set;}
     public LoginViewModel LoginVm {get; set;}
     public PasswordGenViewModel PasswordGenVm {get; set;}
-    public UserViewModel UserVm {get; set;}
-    public SignUpViewModel SignUpVm {get; set;}
+
+    public SecuritycheckViewModel SecuritycheckVm { get; set; }
     
     
     
@@ -41,10 +39,9 @@ public class MainViewModel : ObservableObject
         AddPasswordVm = new AddPasswordViewModel();
         LoginVm = new LoginViewModel();
         PasswordGenVm = new PasswordGenViewModel();
-        UserVm = new UserViewModel();
-        SignUpVm = new SignUpViewModel();
-  
-        
+        SecuritycheckVm = new SecuritycheckViewModel();
+
+
         CurrentView = HomeVm;
         
         HomeViewCommand = new RelayCommand( o=>
@@ -57,25 +54,16 @@ public class MainViewModel : ObservableObject
             CurrentView = AddPasswordVm;
         });
         
-        LoginViewCommand = new RelayCommand( o=>
-        {
-            CurrentView = LoginVm;
-        });
-        
         PasswordGenViewCommand = new RelayCommand( o=>
         {
             CurrentView = PasswordGenVm;
         });
         
-        UserViewCommand = new RelayCommand( o=>
+        SecuritycheckViewCommand = new RelayCommand( o=>
         {
-            CurrentView = UserVm;
+            CurrentView = SecuritycheckVm;
         });
         
-        SignUpViewCommand = new RelayCommand( o=>
-        {
-            CurrentView = SignUpVm;
-        });
         
     }
 }

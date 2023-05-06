@@ -37,6 +37,10 @@
                 <view:SignUpView/>
             </DataTemplate>
             
+            <DataTemplate DataType="{x:Type viewModel:SecuritycheckViewModel}">
+                <view:Securitycheck/>
+            </DataTemplate>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

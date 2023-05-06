@@ -87,6 +87,13 @@
                                          FontFamily="\Fonts\#Nunito"
                                          Style="{StaticResource NavbarButtonTheme}"
                                          Command="{Binding AddPasswordViewCommand}"/>
+                            <RadioButton Content="Security test" Grid.Row="3"
+                                         Height="50"
+                                         Foreground="White"
+                                         FontSize="14"
+                                         FontFamily="\Fonts\#Nunito"
+                                         Style="{StaticResource NavbarButtonTheme}"
+                                         Command="{Binding SecuritycheckViewCommand}"/>
                         </Grid>
                     </Grid>
                 </StackPanel>
