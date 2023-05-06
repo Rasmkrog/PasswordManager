@@ -86,6 +86,9 @@ namespace PasswordManager.MVVM.View
                         command.Parameters.AddWithValue("@HashedPassword", passwordText);
                         command.ExecuteNonQuery();
                     }
+                    // Besked om at bruger er oprettet
+                    MessageBox.Show("Bruger oprettet!");
+                    // Sender bruger til Main Window
                     ToHomeView();
                 }
             }
