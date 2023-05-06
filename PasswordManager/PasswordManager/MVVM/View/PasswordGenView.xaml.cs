@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Security.Cryptography;
 using System.Linq;
 using System.Windows;
+using PasswordManager.Core;
 
 namespace PasswordManager.MVVM.View;
 
@@ -90,5 +91,11 @@ public partial class PasswordGenView : UserControl
         var password = PasswordGenerator.Generate(length, includeLowercase, includeUppercase, includeDigits, includeSpecialChars);
 
         PasswordTextBox.Text = password;
+    }
+
+
+    private void SavePass(object sender, RoutedEventArgs e)
+    {
+        NewPassword.Password = PasswordTextBox.Text;
     }
 }
