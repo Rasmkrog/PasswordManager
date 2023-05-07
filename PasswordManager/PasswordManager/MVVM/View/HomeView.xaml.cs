@@ -65,118 +65,6 @@ public partial class HomeView : UserControl
             
             if (reader.HasRows)
             {
-                /*
-                //create scrollviewer
-                ScrollViewer scrollViewer = new ScrollViewer();
-                scrollViewer.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
-                scrollViewer.HorizontalScrollBarVisibility = ScrollBarVisibility.Hidden;
-                scrollViewer.Height = 500;
-                scrollViewer.Width = 1000;
-                scrollViewer.Margin = new Thickness(0, 0, 0, 0);
-                scrollViewer.BorderThickness = new Thickness(1);
-                scrollViewer.VerticalAlignment = VerticalAlignment.Top;
-                scrollViewer.HorizontalAlignment = HorizontalAlignment.Left;
-                scrollViewer.CanContentScroll = true;
-                scrollViewer.PanningMode = PanningMode.VerticalOnly;
-                scrollViewer.PanningDeceleration = 0.001;
-                scrollViewer.PanningRatio = 0.5;
-                scrollViewer.IsDeferredScrollingEnabled = true;
-                scrollViewer.IsManipulationEnabled = true;
-                scrollViewer.IsHitTestVisible = true;
-                scrollViewer.IsTabStop = true;
-                
-                //add the scrollviewer to the grid
-                LoginGrid?.Children.Add(scrollViewer);*/
-                
-                /*
-                 
-                //create headers for each column
-                TextBlock titleHeader = new TextBlock();
-                TextBlock usernameHeader = new TextBlock();
-                TextBlock passwordHeader = new TextBlock();
-                TextBlock emailHeader = new TextBlock();
-                TextBlock dateHeader = new TextBlock();
-                
-                //Set the text of each header
-                titleHeader.Text = "Title";
-                usernameHeader.Text = "Username";
-                passwordHeader.Text = "Password";
-                emailHeader.Text = "Email";
-                dateHeader.Text = "Date Created";
-                
-                //Set the font size of each header
-                titleHeader.FontSize = 16;
-                usernameHeader.FontSize = 16;
-                passwordHeader.FontSize = 16;
-                emailHeader.FontSize = 16;
-                dateHeader.FontSize = 16;
-
-                //set the font family of each header
-                titleHeader.FontFamily = new FontFamily("Nunito");
-                usernameHeader.FontFamily = new FontFamily("Nunito");
-                passwordHeader.FontFamily = new FontFamily("Nunito");
-                emailHeader.FontFamily = new FontFamily("Nunito");
-                dateHeader.FontFamily = new FontFamily("Nunito");
-                
-                //set font weight of each header
-                titleHeader.FontWeight = FontWeights.Bold;
-                usernameHeader.FontWeight = FontWeights.Bold;
-                passwordHeader.FontWeight = FontWeights.Bold;
-                emailHeader.FontWeight = FontWeights.Bold;
-                dateHeader.FontWeight = FontWeights.Bold;
-                
-                
-                
-                titleHeader.HorizontalAlignment = HorizontalAlignment.Center;
-                usernameHeader.HorizontalAlignment = HorizontalAlignment.Center;
-                passwordHeader.HorizontalAlignment = HorizontalAlignment.Center;
-                emailHeader.HorizontalAlignment = HorizontalAlignment.Center;
-                dateHeader.HorizontalAlignment = HorizontalAlignment.Center;
-                
-
-                //Set the font color of each header
-                titleHeader.Foreground = Brushes.White;
-                usernameHeader.Foreground = Brushes.White;
-                passwordHeader.Foreground = Brushes.White;
-                emailHeader.Foreground = Brushes.White;
-                dateHeader.Foreground = Brushes.White;
-                
-                //Set the margin of each header
-                titleHeader.Margin = new Thickness(20,0,20,0);
-                usernameHeader.Margin = new Thickness(20,0,20,0);
-                passwordHeader.Margin = new Thickness(10, 0, 10, 0);
-                emailHeader.Margin = new Thickness(10, 0, 10, 0);
-                dateHeader.Margin = new Thickness(10, 0, 10, 0);
-
-                titleHeader.Padding = new Thickness(0, 0, 0, 5);
-                usernameHeader.Padding = new Thickness(0, 0, 0, 5);
-                passwordHeader.Padding = new Thickness(0, 0, 0, 5);
-                emailHeader.Padding = new Thickness(0, 0, 0, 5);
-                dateHeader.Padding = new Thickness(0, 0, 0, 5);
-                
-                
-                //Add the headers to the grid
-                Grid.SetRow(titleHeader, 0);
-                Grid.SetColumn(titleHeader, 0);
-                this.HeaderGrid.Children.Add(titleHeader);
-                
-                Grid.SetRow(usernameHeader, 0);
-                Grid.SetColumn(usernameHeader, 1);
-                this.HeaderGrid.Children.Add(usernameHeader);
-                
-                Grid.SetRow(passwordHeader, 0);
-                Grid.SetColumn(passwordHeader, 2);
-                this.HeaderGrid.Children.Add(passwordHeader);
-                
-                Grid.SetRow(emailHeader, 0);
-                Grid.SetColumn(emailHeader, 3);
-                this.HeaderGrid.Children.Add(emailHeader);
-                
-                
-                Grid.SetRow(dateHeader, 0);
-                Grid.SetColumn(dateHeader, 5);
-                this.HeaderGrid.Children.Add(dateHeader);*/
-                
                 while (reader.Read())
                 {
                     _rows++;
@@ -286,6 +174,37 @@ public partial class HomeView : UserControl
                     password.HorizontalAlignment = HorizontalAlignment.Right;
                     email.HorizontalAlignment = HorizontalAlignment.Left;
                     date.HorizontalAlignment = HorizontalAlignment.Right;
+                    
+                    //allow highligting
+                    
+                    //copy text to clipboard on click
+                    title.MouseLeftButtonDown += (sender, args) =>
+                    {
+                        Clipboard.SetText(title.Text);
+                    };
+                    username.MouseLeftButtonDown += (sender, args) =>
+                    {
+                        Clipboard.SetText(username.Text);
+                    };
+                    password.MouseLeftButtonDown += (sender, args) =>
+                    {
+                        Clipboard.SetText(password.Text);
+                    };
+                    email.MouseLeftButtonDown += (sender, args) =>
+                    {
+                        Clipboard.SetText(email.Text);
+                    };
+                    date.MouseLeftButtonDown += (sender, args) =>
+                    {
+                        Clipboard.SetText(date.Text);
+                    };
+                    
+                    
+                    
+                        
+                    
+                    
+                    
                     
                     //set textaligment
                     title.TextAlignment = TextAlignment.Left;
