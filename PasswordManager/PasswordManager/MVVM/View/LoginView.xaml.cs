@@ -37,8 +37,10 @@ namespace PasswordManager.MVVM.View
                     con);
                     // Sætter @Username's værdi til UserInfo.Username
                 command.Parameters.AddWithValue("@Username", UserInfo.UserName);
+                
+                Sha256script sha256Script = new Sha256script();
                     // Sætter @Hashed_Password's værdi til Userinfo.Password
-                command.Parameters.AddWithValue("@Hashed_Password", UserInfo.Password);
+                command.Parameters.AddWithValue("@Hashed_Password", sha256Script.ShAencryption(UserInfo.Password));
 
                     // SQL data reader, læser data asynkront fra resten af koden
                 SqlDataReader reader = await command.ExecuteReaderAsync();
