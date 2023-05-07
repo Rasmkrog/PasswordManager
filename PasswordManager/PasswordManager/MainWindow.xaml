@@ -3,10 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PasswordManager"
-        xmlns:temp="clr-namespace:PasswordManager.Core"
         xmlns:viewModel="clr-namespace:PasswordManager.MVVM.ViewModel"
-        
         mc:Ignorable="d"
         WindowStyle="None"
         ResizeMode="NoResize"
@@ -15,12 +12,9 @@
         AllowsTransparency="True"
         Height="600" 
         Width="920">
-        
     <Window.DataContext>
         <viewModel:MainViewModel/>
     </Window.DataContext>
-    
-    
     
     <Border Background="#272537"
             BorderThickness="0"
@@ -50,8 +44,7 @@
                 FontSize="28"
                 FontWeight="ExtraBold"
                 FontFamily="\Fonts\#Nunito"/>
-            
-                <StackPanel Grid.Row="1" Grid.Column="0" Style="{StaticResource StackPanelStyle}">
+            <StackPanel Grid.Row="1" Grid.Column="0" Style="{StaticResource StackPanelStyle}">
                     <Grid >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -97,37 +90,7 @@
                         </Grid>
                     </Grid>
                 </StackPanel>
-                        
-                        <!--
-                        <Grid Row="2">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <Button Content="Settings" Grid.Row="0"
-                                         Height="50"
-                                         Foreground="White"
-                                         FontSize="14" 
-                                         FontFamily="\Fonts\#Nunito"/>
-                            
-                                         < Style="{StaticResource }" 
-                            <Button Content="Language" Grid.Row="1"
-                                         Height="50"
-                                         Foreground="White"
-                                         FontSize="14"
-                                         FontFamily="\Fonts\#Nunito"/> 
-                                          Style="{StaticResource }" 
-                            <Button Content="User" Grid.Row="2"
-                                         Height="50"
-                                         Foreground="    White"
-                                         FontSize="14"
-                                         FontFamily="\Fonts\#Nunito"/>
-                                         <Style="{StaticResource }"
-                        
-                    </Grid>-->
                 
-            
             <TextBlock Grid.Row="0" 
                        Grid.Column="1"
                        VerticalAlignment="Center"
