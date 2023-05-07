@@ -14,19 +14,12 @@ public class MainViewModel : ObservableObject
     
     public RelayCommand NavigateToPass { get;  }
     
-    public RelayCommand SavePassword { get; }
-    
-    
-    
     public HomeViewModel HomeVm {get; set;}
     public AddPasswordViewModel AddPasswordVm {get; set;}
     public LoginViewModel LoginVm {get; set;}
     public PasswordGenViewModel PasswordGenVm {get; set;}
 
     public SecuritycheckViewModel SecuritycheckVm { get; set; }
-    
-    
-    
     
     
     private object _currentView = null!;
@@ -40,22 +33,7 @@ public class MainViewModel : ObservableObject
             OnPropertyChanged();
         }
     }
-    private ObservableObject _currentViewModel;
-    
-    public ObservableObject CurrentViewModel
-    {
-        get => _currentViewModel;
-        set
-        {
-            _currentViewModel = value;
-            OnPropertyChanged();
-        }
-    }
-    
-    public ICommand UpdateViewCommand { get; set; }
-    
-    
-    
+
     public MainViewModel()
     {
         HomeVm = new HomeViewModel();
@@ -86,15 +64,6 @@ public class MainViewModel : ObservableObject
         {
             CurrentView = SecuritycheckVm;
         });
-
-        SavePassword = new RelayCommand(o =>
-        {
-            CurrentView = HomeVm;
-        });
-
-
-        UpdateViewCommand = new UpdataViewCommand(this);
-
     }
     
     
