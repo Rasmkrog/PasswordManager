@@ -5,7 +5,6 @@ namespace PasswordManager.MVVM.Model;
 
 public class AesEncryption
   {
-    [Obsolete("Obsolete")]
     public string Encrypt(string text, string password, string salt)
     {
       byte[] bytes = Encoding.Unicode.GetBytes(text);
@@ -34,9 +33,10 @@ public class AesEncryption
       return Convert.ToBase64String(encryptedBytes);
     }
     
-    [Obsolete("Obsolete")]
+   
     public static string Decrypt(string encryptedText, string? password, string salt)
     {
+      // Sæt nøglen og initialiseringsvektoren til passende længde
       byte[] bytes = Convert.FromBase64String(encryptedText);
       byte[] passwordBytes = Encoding.Unicode.GetBytes(password);
       byte[] saltBytes = Encoding.Unicode.GetBytes(salt);

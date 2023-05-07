@@ -91,7 +91,7 @@ public partial class HomeView : UserControl
                     
                     //style the grid eachlogin
                     eachlogin.Background = new SolidColorBrush(Colors.Transparent);
-                    eachlogin.Margin = new Thickness(0, 0, 0, 10);
+                    eachlogin.Margin = new Thickness(0, 10, 0, 10);
                     
                     
                     //Style the border
@@ -199,13 +199,6 @@ public partial class HomeView : UserControl
                         Clipboard.SetText(date.Text);
                     };
                     
-                    
-                    
-                        
-                    
-                    
-                    
-                    
                     //set textaligment
                     title.TextAlignment = TextAlignment.Left;
                     username.TextAlignment = TextAlignment.Left;
@@ -250,7 +243,7 @@ public partial class HomeView : UserControl
                     
                     LoginsGrid.Children.Add(border);
                     
-                    LoginsGrid.ShowGridLines= true;
+                    //LoginsGrid.ShowGridLines= true;
                 }
                 if (_rows-1 == 1)
                 {
