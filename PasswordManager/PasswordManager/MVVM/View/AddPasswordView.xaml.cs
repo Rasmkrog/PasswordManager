@@ -27,7 +27,7 @@ public partial class AddPasswordView : UserControl
     private int? _userId = UserInfo.UserID;
     static SaltGen saltGen = new SaltGen();
     private readonly string _Salt = saltGen.GenerateSalt();
-    private void SavePassword(object sender, MouseButtonEventArgs e)
+    private void SavePassword(object sender, RoutedEventArgs routedEventArgs)
     {
         _title = TitleTextBox.Text;
         _username = UsernameTextBox.Text;

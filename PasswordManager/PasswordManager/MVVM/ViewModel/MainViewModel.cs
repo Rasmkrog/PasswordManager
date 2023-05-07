@@ -1,6 +1,8 @@
 ﻿using PasswordManager.Core;
 using System.Security.Cryptography;
 using System.Security.RightsManagement;
+using System.Threading;
+using System.Windows.Input;
 namespace PasswordManager.MVVM.ViewModel;
 
 public class MainViewModel : ObservableObject
@@ -11,6 +13,9 @@ public class MainViewModel : ObservableObject
     public RelayCommand SecuritycheckViewCommand { get; }
     
     public RelayCommand NavigateToPass { get;  }
+    
+    public RelayCommand SavePassword { get; }
+    
     
     
     public HomeViewModel HomeVm {get; set;}
@@ -35,8 +40,22 @@ public class MainViewModel : ObservableObject
             OnPropertyChanged();
         }
     }
+    private ObservableObject _currentViewModel;
     
-
+    public ObservableObject CurrentViewModel
+    {
+        get => _currentViewModel;
+        set
+        {
+            _currentViewModel = value;
+            OnPropertyChanged();
+        }
+    }
+    
+    public ICommand UpdateViewCommand { get; set; }
+    
+    
+    
     public MainViewModel()
     {
         HomeVm = new HomeViewModel();
@@ -67,7 +86,21 @@ public class MainViewModel : ObservableObject
         {
             CurrentView = SecuritycheckVm;
         });
-        
-        
+
+        SavePassword = new RelayCommand(o =>
+        {
+            CurrentView = HomeVm;
+        });
+
+
+        UpdateViewCommand = new UpdataViewCommand(this);
+
     }
+    
+    
+    
+    
+    
+    
+    
 }

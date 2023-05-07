@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PasswordManager.MVVM.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mime;
@@ -24,6 +25,7 @@ namespace PasswordManager
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainViewModel();
         }
         
         //Luk program Knap
