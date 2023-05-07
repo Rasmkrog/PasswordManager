@@ -91,11 +91,7 @@ public partial class PasswordGenView : UserControl
         var password = PasswordGenerator.Generate(length, includeLowercase, includeUppercase, includeDigits, includeSpecialChars);
 
         PasswordTextBox.Text = password;
-    }
-
-
-    private void SavePass(object sender, RoutedEventArgs e)
-    {
         NewPassword.Password = PasswordTextBox.Text;
+        Clipboard.SetText(password);
     }
 }
