@@ -104,11 +104,11 @@ public partial class HomeView : UserControl
                 dateHeader.Text = "Date Created";
                 
                 //Set the font size of each header
-                titleHeader.FontSize = 18;
-                usernameHeader.FontSize = 18;
-                passwordHeader.FontSize = 18;
-                emailHeader.FontSize = 18;
-                dateHeader.FontSize = 18;
+                titleHeader.FontSize = 16;
+                usernameHeader.FontSize = 16;
+                passwordHeader.FontSize = 16;
+                emailHeader.FontSize = 16;
+                dateHeader.FontSize = 16;
 
                 //set the font family of each header
                 titleHeader.FontFamily = new FontFamily("Nunito");
@@ -186,7 +186,22 @@ public partial class HomeView : UserControl
                     //Add the row to the grid
                     LoginGrid.RowDefinitions.Add(row);
                     
-                    //Create a new TextBlock for each column
+                    Grid customGrid = new Grid();
+                    ColumnDefinition starcolumn = new ColumnDefinition();
+                    ColumnDefinition Autocolumn = new ColumnDefinition();
+                    RowDefinition starrow = new RowDefinition();
+                    RowDefinition Autorow = new RowDefinition();
+                    starrow.Height = new GridLength(1, GridUnitType.Star);
+                    Autorow.Height = new GridLength(1, GridUnitType.Auto);
+                    starcolumn.Width = new GridLength(1, GridUnitType.Star);
+                    Autocolumn.Width = new GridLength(1, GridUnitType.Auto);
+                    customGrid.RowDefinitions.Add(row);
+                    customGrid.RowDefinitions.Add(row);
+                    customGrid.RowDefinitions.Add(row);
+                    customGrid.ColumnDefinitions.Add(starcolumn);
+                    customGrid.ColumnDefinitions.Add(Autocolumn);
+                    
+                    //Create a new TextBlock for each data
                     TextBlock title = new TextBlock();
                     TextBlock username = new TextBlock();
                     TextBlock password = new TextBlock();
@@ -212,23 +227,28 @@ public partial class HomeView : UserControl
                     
                     //Set the font size of each TextBlock
                     title.FontSize = 16;
-                    username.FontSize = 16;
-                    password.FontSize = 16;
-                    email.FontSize = 16;
-                    date.FontSize = 16;
+                    username.FontSize = 14;
+                    password.FontSize = 14;
+                    email.FontSize = 12;
+                    date.FontSize = 12;
                     
                     title.FontFamily = new FontFamily("Nunito");
                     username.FontFamily = new FontFamily("Nunito");
                     password.FontFamily = new FontFamily("Nunito");
                     email.FontFamily = new FontFamily("Nunito");
                     date.FontFamily = new FontFamily("Nunito");
+                    
                 
                     //set font weight of each textblock
-                    title.FontWeight = FontWeights.Medium;
+                    title.FontWeight = FontWeights.Bold;
                     username.FontWeight = FontWeights.Medium;
                     password.FontWeight = FontWeights.Medium;
-                    email.FontWeight = FontWeights.Medium;
-                    date.FontWeight = FontWeights.Medium;
+                    email.FontWeight = FontWeights.Light;
+                    date.FontWeight = FontWeights.Light;
+                    
+                    //set font style of email and date
+                    email.FontStyle = FontStyles.Italic;
+                    date.FontStyle = FontStyles.Italic;
                     
                     
                     //Set the font color of each TextBlock
@@ -238,55 +258,80 @@ public partial class HomeView : UserControl
                     email.Foreground = Brushes.White;
                     date.Foreground = Brushes.White;
                     
+                    //set oppacity
+                    email.Opacity = 0.8;
+                    date.Opacity = 0.8;
+                    
                     //Set the margin of each TextBlock
-
-                    title.Margin = new Thickness(10,0,10,0);
-                    username.Margin = new Thickness(10,0,10,0);
+                    title.Margin = new Thickness(20,0,0,0);
+                    username.Margin = new Thickness(20,0,10,0);
                     password.Margin = new Thickness(10, 0, 10, 0);
-                    email.Margin = new Thickness(10, 0, 10, 0);
+                    email.Margin = new Thickness(20, 0, 0, 0);
                     date.Margin = new Thickness(10, 0, 10, 0);
                     
-                    title.HorizontalAlignment = HorizontalAlignment.Center;
-                    username.HorizontalAlignment = HorizontalAlignment.Center;
-                    password.HorizontalAlignment = HorizontalAlignment.Center;
-                    email.HorizontalAlignment = HorizontalAlignment.Center;
-                    date.HorizontalAlignment = HorizontalAlignment.Center;
+                    //set horizontal aligment
+                    title.HorizontalAlignment = HorizontalAlignment.Left;
+                    username.HorizontalAlignment = HorizontalAlignment.Left;
+                    password.HorizontalAlignment = HorizontalAlignment.Right;
+                    email.HorizontalAlignment = HorizontalAlignment.Left;
+                    date.HorizontalAlignment = HorizontalAlignment.Right;
                     
+                    //set textaligment
+                    title.TextAlignment = TextAlignment.Left;
+                    username.TextAlignment = TextAlignment.Left;
+                    password.TextAlignment = TextAlignment.Left;
+                    email.TextAlignment = TextAlignment.Left;
+                    date.TextAlignment = TextAlignment.Left;
                     
-                    
-                    
-                    //Add the TextBlocks to the grid
-                    Grid.SetRow(title, LoginGrid.RowDefinitions.Count - 1);
+                    //Add the TextBlocks to the customgrid 
+                    Grid.SetRow(title, 0);
                     Grid.SetColumn(title, 0);
-                    LoginGrid.Children.Add(title);
-
-                    Grid.SetRow(username, LoginGrid.RowDefinitions.Count - 1);
-                    Grid.SetColumn(username, 1);
-                    LoginGrid.Children.Add(username);
-
-                    Grid.SetRow(password, LoginGrid.RowDefinitions.Count - 1);
-                    Grid.SetColumn(password, 2);
-                    LoginGrid.Children.Add(password);
-
-                    Grid.SetRow(email, LoginGrid.RowDefinitions.Count - 1);
-                    Grid.SetColumn(email, 3);
-                    LoginGrid.Children.Add(email);
+                    customGrid.Children.Add(title);
                     
-                    Grid.SetRow(date, LoginGrid.RowDefinitions.Count - 1);
-                    Grid.SetColumn(date, 5);
-                    LoginGrid.Children.Add(date);
+                    Grid.SetRow(username, 1);
+                    Grid.SetColumn(username, 0);
+                    customGrid.Children.Add(username);
+                    
+                    Grid.SetRow(password, 1);
+                    Grid.SetColumn(password, 1);
+                    customGrid.Children.Add(password);
+                    
+                    Grid.SetRow(email, 2);
+                    Grid.SetColumn(email, 0);
+                    customGrid.Children.Add(email);
+                    
+                    Grid.SetRow(date, 2);
+                    Grid.SetColumn(date, 1);
+                    customGrid.Children.Add(date);
+                    
+                    //add customgrid to the login grid
+                    Grid.SetRow(customGrid, LoginGrid.RowDefinitions.Count - 1);
+                    Grid.SetColumn(customGrid, 0);
+                    LoginGrid.Children.Add(customGrid);
                     
                     LoginGrid.ShowGridLines= true;
                 }
                 if (_rows-1 == 1)
                 {
-                    NumberOfLogins.Text = $"{_rows + 1}"; 
-                    loginstext.Text = "login";
+                    if (NumberOfLogins != null)
+                    {
+                        NumberOfLogins.Text = $"{_rows + 1}";
+                    }
+                    if (loginstext != null)
+                    {
+                        loginstext.Text = "login";
+                    }
                 }
                 else
                 {
-                    NumberOfLogins.Text = $"{_rows--}";
-                    loginstext.Text = "logins";
+                    if (NumberOfLogins != null)
+                    {
+                        NumberOfLogins.Text = $"{_rows--}";
+                    }
+                    if (loginstext != null)
+                    {
+                        loginstext.Text = "logins";
+                    }
                 }
                 
                
