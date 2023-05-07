@@ -65,23 +65,72 @@
         <Border Grid.Row="1" 
                 BorderBrush="Gray" 
                 BorderThickness="1" 
-                CornerRadius="20">            
-            
-            
-            <Grid Grid.Row="1" x:Name="LoginGrid" Margin="5">
-            
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    
-                </Grid.ColumnDefinitions>
+                CornerRadius="20">
+            <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
+                <Grid Grid.Row="0"
+                      x:Name="HeaderGrid"
+                      Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                </Grid>
+                
+                
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
+                <ScrollViewer.Resources>
+                    <Style TargetType="ScrollBar" BasedOn="{StaticResource {x:Type ScrollBar}}">
+                        <Setter Property="Background" Value="#514e61"/>
+                        <Setter Property="Width" Value="15"/>
+                        <Setter Property="Minimum" Value="0"/>
+                        <Setter Property="Maximum" Value="{Binding ElementName=HeightProperty}"/>
+                        <Setter Property="ViewportSize" Value="350"/>
+                        <Setter Property="Padding" Value="0,1"></Setter>
+                        <Setter Property="Value" Value="{Binding VerticalOffset, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ScrollBar">
+                                    <Grid>
+                                        <Border Background="{TemplateBinding Background}" CornerRadius="5"
+                                                Width="{TemplateBinding Width}"
+                                                Padding="{TemplateBinding Padding}"/>
+                                        <Track x:Name="PART_Track" IsDirectionReversed="true" Focusable="False">
+                                            <Track.Thumb>
+                                                <Thumb Background="#39306b" 
+                                                       Style="{DynamicResource ScrollBarTrackThumb}"
+                                                       Width="10"/>
+                                                
+                                            </Track.Thumb>
+                                        </Track>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ScrollViewer.Resources>        
+                <Grid x:Name="LoginGrid" Margin="5">
+            
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                </Grid>
+            </ScrollViewer>
             </Grid>
+            
         </Border>
         
         <Button Grid.Row="2" 

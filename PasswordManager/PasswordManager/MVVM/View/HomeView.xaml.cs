@@ -24,7 +24,7 @@ public partial class HomeView : UserControl
         InitializeComponent();
         
         //initialize the grid
-        LoadData(LoginGrid, NumberOfLogins, loginstext);
+        LoadData(LoginGrid, NumberOfLogins, loginstext, HeaderGrid);
         
     }
 
@@ -32,7 +32,7 @@ public partial class HomeView : UserControl
     private int _rows;
     
     [Obsolete("Obsolete")]
-    public async void LoadData(Grid? LoginGrid, TextBlock? NumberOfLogins, TextBlock? loginstext)
+    public async void LoadData(Grid? LoginGrid, TextBlock? NumberOfLogins, TextBlock? loginstext, Grid? HeaderGrid)
     {
         
         _rows = 0;
@@ -65,6 +65,30 @@ public partial class HomeView : UserControl
             
             if (reader.HasRows)
             {
+                /*
+                //create scrollviewer
+                ScrollViewer scrollViewer = new ScrollViewer();
+                scrollViewer.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
+                scrollViewer.HorizontalScrollBarVisibility = ScrollBarVisibility.Hidden;
+                scrollViewer.Height = 500;
+                scrollViewer.Width = 1000;
+                scrollViewer.Margin = new Thickness(0, 0, 0, 0);
+                scrollViewer.BorderThickness = new Thickness(1);
+                scrollViewer.VerticalAlignment = VerticalAlignment.Top;
+                scrollViewer.HorizontalAlignment = HorizontalAlignment.Left;
+                scrollViewer.CanContentScroll = true;
+                scrollViewer.PanningMode = PanningMode.VerticalOnly;
+                scrollViewer.PanningDeceleration = 0.001;
+                scrollViewer.PanningRatio = 0.5;
+                scrollViewer.IsDeferredScrollingEnabled = true;
+                scrollViewer.IsManipulationEnabled = true;
+                scrollViewer.IsHitTestVisible = true;
+                scrollViewer.IsTabStop = true;
+                
+                //add the scrollviewer to the grid
+                LoginGrid?.Children.Add(scrollViewer);*/
+                
+
                 //create headers for each column
                 TextBlock titleHeader = new TextBlock();
                 TextBlock usernameHeader = new TextBlock();
@@ -133,27 +157,25 @@ public partial class HomeView : UserControl
                 //Add the headers to the grid
                 Grid.SetRow(titleHeader, 0);
                 Grid.SetColumn(titleHeader, 0);
-                LoginGrid.Children.Add(titleHeader);
+                this.HeaderGrid.Children.Add(titleHeader);
                 
                 Grid.SetRow(usernameHeader, 0);
                 Grid.SetColumn(usernameHeader, 1);
-                LoginGrid.Children.Add(usernameHeader);
+                this.HeaderGrid.Children.Add(usernameHeader);
                 
                 Grid.SetRow(passwordHeader, 0);
                 Grid.SetColumn(passwordHeader, 2);
-                LoginGrid.Children.Add(passwordHeader);
+                this.HeaderGrid.Children.Add(passwordHeader);
                 
                 Grid.SetRow(emailHeader, 0);
                 Grid.SetColumn(emailHeader, 3);
-                LoginGrid.Children.Add(emailHeader);
+                this.HeaderGrid.Children.Add(emailHeader);
                 
                 
                 Grid.SetRow(dateHeader, 0);
                 Grid.SetColumn(dateHeader, 5);
-                LoginGrid.Children.Add(dateHeader);
+                this.HeaderGrid.Children.Add(dateHeader);
                 
-
-
                 while (reader.Read())
                 {
                     _rows++;
@@ -253,6 +275,8 @@ public partial class HomeView : UserControl
                     Grid.SetRow(date, LoginGrid.RowDefinitions.Count - 1);
                     Grid.SetColumn(date, 5);
                     LoginGrid.Children.Add(date);
+                    
+                    LoginGrid.ShowGridLines= true;
                 }
                 if (_rows-1 == 1)
                 {
@@ -265,7 +289,8 @@ public partial class HomeView : UserControl
                     loginstext.Text = "logins";
                 }
                 
-                
+               
+               
             }
             else
             {

@@ -16,8 +16,17 @@ public partial class AddPasswordView : UserControl
     public AddPasswordView()
     {
         InitializeComponent();
-        
+        Onload();
     }
+
+    public void Onload()
+    {
+        if (NewPassword.Password != null)
+        {
+            PasswordTextBox.Password = NewPassword.Password;
+        }
+    }
+    
 
     private string _title;
     private string _username;
@@ -26,8 +35,8 @@ public partial class AddPasswordView : UserControl
     private string _websiteUrl;
     private string _notes;
     private int? _userId = UserInfo.UserID;
-    static SaltGen saltGen = new SaltGen();
-    private readonly string _Salt = saltGen.GenerateSalt();
+    static SaltGen _saltGen = new SaltGen();
+    private readonly string _salt = _saltGen.GenerateSalt();
     private void SavePassword(object sender, RoutedEventArgs routedEventArgs)
     {
         _title = TitleTextBox.Text;
@@ -65,7 +74,7 @@ public partial class AddPasswordView : UserControl
         AesEncryption aes = new AesEncryption();
         if (UserInfo.Password != null)
         {
-           _hashedPassword =  aes.Encrypt(PasswordTextBox.Password, UserInfo.Password, _Salt);
+           _hashedPassword =  aes.Encrypt(PasswordTextBox.Password, UserInfo.Password, _salt);
         }
 
 
@@ -89,7 +98,7 @@ public partial class AddPasswordView : UserControl
                 command.Parameters.AddWithValue("@HashedPassword", _hashedPassword);
                 command.Parameters.AddWithValue("@URL", _websiteUrl);
                 command.Parameters.AddWithValue("@Notes", _notes);
-                command.Parameters.AddWithValue("@Salt", _Salt);
+                command.Parameters.AddWithValue("@Salt", _salt);
                 command.ExecuteNonQuery();
                 
                 // Besked om at bruger er oprettet
@@ -100,6 +109,7 @@ public partial class AddPasswordView : UserControl
                 UsernameTextBox.Text = "";
                 EmailTextBox.Text = "";
                 PasswordTextBox.Password = "";
+                NewPassword.Password = null;
                 WebsiteUrlTextBox.Text = "";
                 NotesTextBox.Text = "";
                 

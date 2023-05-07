@@ -2,7 +2,7 @@
 
 public class NewPassword
 {
-    public static string Password { get; set; }
+    public static string? Password { get; set; }
     
     
 }
