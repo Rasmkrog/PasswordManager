@@ -72,11 +72,4 @@ public class MainViewModel : ObservableObject
             CurrentView = SecuritycheckVm;
         });
     }
-    
-    
-    
-    
-    
-    
-    
 }
