@@ -94,6 +94,16 @@ public partial class AddPasswordView : UserControl
                 
                 // Besked om at bruger er oprettet
                 MessageBox.Show("Password tilføjet!");
+                
+                // Textboxe ryddes
+                TitleTextBox.Text = "";
+                UsernameTextBox.Text = "";
+                EmailTextBox.Text = "";
+                PasswordTextBox.Password = "";
+                WebsiteUrlTextBox.Text = "";
+                NotesTextBox.Text = "";
+                
+                
             }
             else
             {
