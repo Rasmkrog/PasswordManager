@@ -17,21 +17,17 @@ namespace PasswordManager.MVVM.View;
 
 public partial class HomeView : UserControl
 {
-    [Obsolete("Obsolete")]
+    
     public HomeView()
     {
-        
         InitializeComponent();
-        
         //initialize the grid
         LoadData(LoginsGrid, NumberOfLogins, loginstext);
-        
     }
 
     private const string SqlQuery = "SELECT Title, Username, Hashed_Password, Salt, Email, URL, Notes, Date_Of_Creation From Logins WHERE UserID = @UserID";
     private int _rows;
     
-    [Obsolete("Obsolete")]
     public async void LoadData(Grid? LoginsGrid, TextBlock? NumberOfLogins, TextBlock? loginstext)
     {
         
@@ -267,9 +263,6 @@ public partial class HomeView : UserControl
                         loginstext.Text = "logins";
                     }
                 }
-                
-               
-               
             }
             else
             {
