@@ -36,7 +36,7 @@
                         Margin="0,0,0,20"
                         >
                 <TextBlock Grid.Column="0"
-                           Text="x"
+                           Text="0"
                            x:Name="NumberOfLogins"
                            FontSize="20"
                            FontWeight="Medium"
