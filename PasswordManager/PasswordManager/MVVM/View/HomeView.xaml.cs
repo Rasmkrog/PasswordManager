@@ -24,7 +24,7 @@ public partial class HomeView : UserControl
         InitializeComponent();
         
         //initialize the grid
-        LoadData(LoginGrid, NumberOfLogins, loginstext, HeaderGrid);
+        LoadData(LoginsGrid, NumberOfLogins, loginstext);
         
     }
 
@@ -32,7 +32,7 @@ public partial class HomeView : UserControl
     private int _rows;
     
     [Obsolete("Obsolete")]
-    public async void LoadData(Grid? LoginGrid, TextBlock? NumberOfLogins, TextBlock? loginstext, Grid? HeaderGrid)
+    public async void LoadData(Grid? LoginsGrid, TextBlock? NumberOfLogins, TextBlock? loginstext)
     {
         
         _rows = 0;
@@ -88,7 +88,8 @@ public partial class HomeView : UserControl
                 //add the scrollviewer to the grid
                 LoginGrid?.Children.Add(scrollViewer);*/
                 
-
+                /*
+                 
                 //create headers for each column
                 TextBlock titleHeader = new TextBlock();
                 TextBlock usernameHeader = new TextBlock();
@@ -174,32 +175,42 @@ public partial class HomeView : UserControl
                 
                 Grid.SetRow(dateHeader, 0);
                 Grid.SetColumn(dateHeader, 5);
-                this.HeaderGrid.Children.Add(dateHeader);
+                this.HeaderGrid.Children.Add(dateHeader);*/
                 
                 while (reader.Read())
                 {
                     _rows++;
-                    //Create a new row for each login
-                    RowDefinition row = new RowDefinition();
-                    row.Height = new GridLength(50);
+                    //create border
+                    Border border = new Border();
                     
-                    //Add the row to the grid
-                    LoginGrid.RowDefinitions.Add(row);
+                    Grid? eachlogin = new Grid();
                     
-                    Grid customGrid = new Grid();
-                    ColumnDefinition starcolumn = new ColumnDefinition();
-                    ColumnDefinition Autocolumn = new ColumnDefinition();
-                    RowDefinition starrow = new RowDefinition();
-                    RowDefinition Autorow = new RowDefinition();
-                    starrow.Height = new GridLength(1, GridUnitType.Star);
-                    Autorow.Height = new GridLength(1, GridUnitType.Auto);
-                    starcolumn.Width = new GridLength(1, GridUnitType.Star);
-                    Autocolumn.Width = new GridLength(1, GridUnitType.Auto);
-                    customGrid.RowDefinitions.Add(row);
-                    customGrid.RowDefinitions.Add(row);
-                    customGrid.RowDefinitions.Add(row);
-                    customGrid.ColumnDefinitions.Add(starcolumn);
-                    customGrid.ColumnDefinitions.Add(Autocolumn);
+                    //adding rows and columns to the grid
+                    var height = GridLength.Auto;
+                    for(int i = 0; i < 3; i ++)
+                    {
+                        if(i == 0)
+                            height = new GridLength(1, GridUnitType.Star);
+                        eachlogin.RowDefinitions.Add(new RowDefinition { Height = height });
+                    }
+                    for(int j =0;j< 1;j++)
+                    {
+                        eachlogin.ColumnDefinitions.Add(new ColumnDefinition
+                        {
+                            Width = new GridLength(1, GridUnitType.Star)
+                        });
+                    }
+                    
+                    //style the grid eachlogin
+                    eachlogin.Background = new SolidColorBrush(Colors.Transparent);
+                    eachlogin.Margin = new Thickness(0, 0, 0, 10);
+                    
+                    
+                    //Style the border
+                    border.BorderBrush = new SolidColorBrush(Colors.GhostWhite);
+                    border.BorderThickness = new Thickness(0, 0, 0, 0);
+                    
+                    
                     
                     //Create a new TextBlock for each data
                     TextBlock title = new TextBlock();
@@ -226,7 +237,7 @@ public partial class HomeView : UserControl
                     date.Text = reader.GetDateTime("Date_Of_Creation").ToShortDateString().ToString(CultureInfo.CurrentCulture);
                     
                     //Set the font size of each TextBlock
-                    title.FontSize = 16;
+                    title.FontSize = 18;
                     username.FontSize = 14;
                     password.FontSize = 14;
                     email.FontSize = 12;
@@ -263,10 +274,10 @@ public partial class HomeView : UserControl
                     date.Opacity = 0.8;
                     
                     //Set the margin of each TextBlock
-                    title.Margin = new Thickness(20,0,0,0);
-                    username.Margin = new Thickness(20,0,10,0);
+                    title.Margin = new Thickness(10,0,0,0);
+                    username.Margin = new Thickness(25,0,10,0);
                     password.Margin = new Thickness(10, 0, 10, 0);
-                    email.Margin = new Thickness(20, 0, 0, 0);
+                    email.Margin = new Thickness(25, 0, 0, 0);
                     date.Margin = new Thickness(10, 0, 10, 0);
                     
                     //set horizontal aligment
@@ -286,30 +297,41 @@ public partial class HomeView : UserControl
                     //Add the TextBlocks to the customgrid 
                     Grid.SetRow(title, 0);
                     Grid.SetColumn(title, 0);
-                    customGrid.Children.Add(title);
+                    eachlogin.Children.Add(title);
                     
                     Grid.SetRow(username, 1);
                     Grid.SetColumn(username, 0);
-                    customGrid.Children.Add(username);
+                    eachlogin.Children.Add(username);
                     
                     Grid.SetRow(password, 1);
                     Grid.SetColumn(password, 1);
-                    customGrid.Children.Add(password);
+                    eachlogin.Children.Add(password);
                     
                     Grid.SetRow(email, 2);
                     Grid.SetColumn(email, 0);
-                    customGrid.Children.Add(email);
+                    eachlogin.Children.Add(email);
                     
                     Grid.SetRow(date, 2);
                     Grid.SetColumn(date, 1);
-                    customGrid.Children.Add(date);
+                    eachlogin.Children.Add(date);
+                    
+                    //add custom grid to border
+                    border.Child = eachlogin;
+                    
+                    //Create a new row for LoginsGrid
+                    RowDefinition row = new RowDefinition();
+                    row.Height = new GridLength(1, GridUnitType.Auto);
+                    
+                    //Add the row to the parrentgrid
+                    LoginsGrid.RowDefinitions.Add(row);
+                    
                     
                     //add customgrid to the login grid
-                    Grid.SetRow(customGrid, LoginGrid.RowDefinitions.Count - 1);
-                    Grid.SetColumn(customGrid, 0);
-                    LoginGrid.Children.Add(customGrid);
+                    Grid.SetRow(border, LoginsGrid.RowDefinitions.Count - 1);
                     
-                    LoginGrid.ShowGridLines= true;
+                    LoginsGrid.Children.Add(border);
+                    
+                    LoginsGrid.ShowGridLines= true;
                 }
                 if (_rows-1 == 1)
                 {
@@ -345,7 +367,7 @@ public partial class HomeView : UserControl
         }
         catch (Exception ex)
         {
-            MessageBox.Show("Connection failed: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show("Error" + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
         finally
         {

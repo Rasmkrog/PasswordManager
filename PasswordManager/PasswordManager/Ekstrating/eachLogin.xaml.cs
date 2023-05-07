@@ -2,9 +2,9 @@
 
 namespace PasswordManager;
 
-public partial class Login : Page
+public partial class eachLogin : Page
 {
-    public Login()
+    public eachLogin()
     {
         InitializeComponent();
     }

@@ -115,18 +115,8 @@
                         </Setter>
                     </Style>
                 </ScrollViewer.Resources>        
-                <Grid x:Name="LoginGrid" Margin="5">
-                    
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
+                <Grid x:Name="LoginsGrid">
+                   
                 </Grid>
             </ScrollViewer>
             </Grid>
