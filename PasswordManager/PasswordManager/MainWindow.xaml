@@ -156,13 +156,11 @@
                     </Path>
                 </Canvas>
             </Grid>
-            
             <ContentControl Grid.Row="1"
                             Grid.Column="1"
                             Margin="10"
                             Content="{Binding CurrentView}">
             </ContentControl>
-            
         </Grid>
     </Border>
 </Window>

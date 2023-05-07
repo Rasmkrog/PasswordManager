@@ -16,6 +16,7 @@ public partial class AddPasswordView : UserControl
     public AddPasswordView()
     {
         InitializeComponent();
+        
     }
 
     private string _title;
@@ -34,13 +35,40 @@ public partial class AddPasswordView : UserControl
         _websiteUrl = WebsiteUrlTextBox.Text;
         _notes = NotesTextBox.Text;
 
+        if (_title == "" || _title == " ")
+        {
+            BorderTitle.BorderBrush = Brushes.Red;
+            BorderTitle.BorderThickness = new Thickness(1);
+            BorderTitle.CornerRadius = new CornerRadius(10);
+            MessageBox.Show("Du skal indtaste en titel");
+            return;
+        }
+        BorderTitle.BorderBrush = Brushes.GhostWhite;
+        BorderTitle.BorderThickness = new Thickness(1);
+        BorderTitle.CornerRadius = new CornerRadius(10);
+        
+        if(_username =="" || _username == " ")
+        {
+            BorderUsername.BorderBrush = Brushes.Red;
+            BorderUsername.BorderThickness = new Thickness(1);
+            BorderUsername.CornerRadius = new CornerRadius(10);
+            MessageBox.Show("Du skal indtaste et brugernavn");
+            return;
+        }
+        BorderUsername.BorderBrush = Brushes.GhostWhite;
+        BorderUsername.BorderThickness = new Thickness(1);
+        BorderUsername.CornerRadius = new CornerRadius(10);
+        
+
+
+
         AesEncryption aes = new AesEncryption();
         if (UserInfo.Password != null)
         {
            _hashedPassword =  aes.Encrypt(PasswordTextBox.Password, UserInfo.Password, _Salt);
         }
-       
-        
+
+
         string insertQuery = "INSERT INTO [Logins] (UserID, Title, Username, Email, Hashed_Password, URL, Notes, Date_Of_Creation, Salt) " +
                              "VALUES (@UserID, @Title, @Username, @Email, @HashedPassword, @URL, @Notes, GETDATE(), @Salt)";
         // Ny forbindelse til databasen skabes
@@ -52,7 +80,7 @@ public partial class AddPasswordView : UserControl
             SqlCommand command = new SqlCommand(insertQuery, connection);
             
             // Parameter @Username's værdi sættes til usernameText - osv.
-            if (_userId != null && _title != null && _username != null)
+            if (_userId != null)
             {
                 command.Parameters.AddWithValue("@UserID", _userId);
                 command.Parameters.AddWithValue("@Title", _title);   
