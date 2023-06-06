@@ -39,12 +39,12 @@ public partial class AddPasswordView : UserControl
     private readonly string _salt = _saltGen.GenerateSalt();
     private void SavePassword(object sender, RoutedEventArgs routedEventArgs)
     {
-        _title = TitleTextBox.Text;
-        _username = UsernameTextBox.Text;
+        _title = TitleTextBox.Text.Trim();
+        _username = UsernameTextBox.Text.Trim();
         _websiteUrl = WebsiteUrlTextBox.Text;
         _notes = NotesTextBox.Text;
 
-        if (_title == "" || _title == " ")
+        if (_title.Length == 0)
         {
             BorderTitle.BorderBrush = Brushes.Red;
             BorderTitle.BorderThickness = new Thickness(1);
@@ -52,11 +52,12 @@ public partial class AddPasswordView : UserControl
             MessageBox.Show("Du skal indtaste en titel");
             return;
         }
+        
         BorderTitle.BorderBrush = Brushes.GhostWhite;
         BorderTitle.BorderThickness = new Thickness(1);
         BorderTitle.CornerRadius = new CornerRadius(10);
         
-        if(_username =="" || _username == " ")
+        if(_username.Length == 0)
         {
             BorderUsername.BorderBrush = Brushes.Red;
             BorderUsername.BorderThickness = new Thickness(1);
@@ -72,10 +73,15 @@ public partial class AddPasswordView : UserControl
 
 
         AesEncryption aes = new AesEncryption();
-        if (UserInfo.Password != null)
+        if (UserInfo.Password == null)
         {
-           _hashedPassword =  aes.Encrypt(PasswordTextBox.Password, UserInfo.Password, _salt);
+            return;
         }
+        if(PasswordTextBox.Password != null)
+        {
+           _hashedPassword =  aes.Encrypt(PasswordTextBox.Password.Trim(), UserInfo.Password, _salt);
+        }
+        
 
 
         string insertQuery = "INSERT INTO [Logins] (UserID, Title, Username, Email, Hashed_Password, URL, Notes, Date_Of_Creation, Salt) " +
@@ -89,36 +95,35 @@ public partial class AddPasswordView : UserControl
             SqlCommand command = new SqlCommand(insertQuery, connection);
             
             // Parameter @Username's værdi sættes til usernameText - osv.
-            if (_userId != null)
-            {
-                command.Parameters.AddWithValue("@UserID", _userId);
-                command.Parameters.AddWithValue("@Title", _title);   
-                command.Parameters.AddWithValue("@Username", _username);
-                command.Parameters.AddWithValue("@Email", EmailTextBox.Text);
-                command.Parameters.AddWithValue("@HashedPassword", _hashedPassword);
-                command.Parameters.AddWithValue("@URL", _websiteUrl);
-                command.Parameters.AddWithValue("@Notes", _notes);
-                command.Parameters.AddWithValue("@Salt", _salt);
-                command.ExecuteNonQuery();
-                
-                // Besked om at bruger er oprettet
-                MessageBox.Show("Password tilføjet!");
-                
-                // Textboxe ryddes
-                TitleTextBox.Text = "";
-                UsernameTextBox.Text = "";
-                EmailTextBox.Text = "";
-                PasswordTextBox.Password = "";
-                NewPassword.Password = null;
-                WebsiteUrlTextBox.Text = "";
-                NotesTextBox.Text = "";
-                
-                
-            }
-            else
+            if (_userId == null)
             {
                 MessageBox.Show("Der skete en fejl, prøv igen");
+                return;
             }
+            command.Parameters.AddWithValue("@UserID", _userId);
+            command.Parameters.AddWithValue("@Title", _title);   
+            command.Parameters.AddWithValue("@Username", _username);
+            command.Parameters.AddWithValue("@Email", EmailTextBox.Text);
+            command.Parameters.AddWithValue("@HashedPassword", _hashedPassword);
+            command.Parameters.AddWithValue("@URL", _websiteUrl);
+            command.Parameters.AddWithValue("@Notes", _notes);
+            command.Parameters.AddWithValue("@Salt", _salt);
+            command.ExecuteNonQuery();
+            
+            // Besked om at bruger er oprettet
+            MessageBox.Show("Password tilføjet!");
+            
+            // Textboxe ryddes
+            TitleTextBox.Text = "";
+            UsernameTextBox.Text = "";
+            EmailTextBox.Text = "";
+            PasswordTextBox.Password = "";
+            NewPassword.Password = null;
+            WebsiteUrlTextBox.Text = "";
+            NotesTextBox.Text = "";
+            
+            // Forbindelsen lukkes
+            connection.Close();
         }
     }
 }

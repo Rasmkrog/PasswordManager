@@ -24,43 +24,32 @@ public partial class HomeView : UserControl
         //initialize the grid
         LoadData(LoginsGrid, NumberOfLogins, loginstext);
     }
-
-    private const string SqlQuery = "SELECT Title, Username, Hashed_Password, Salt, Email, URL, Notes, Date_Of_Creation From Logins WHERE UserID = @UserID";
+    
     private int _rows;
     
+    private const string SqlQuery = "SELECT Title, Username, Hashed_Password, Salt, Email, URL, Notes, Date_Of_Creation From Logins WHERE UserID = @UserID";
     public async void LoadData(Grid? LoginsGrid, TextBlock? NumberOfLogins, TextBlock? loginstext)
     {
         
         _rows = 0;
         SqlConnection connection = new SqlConnection(ConnectionString);
-        try
-        {
+        try {
             connection.Open();
-            
             //Select all logins from the database containing Title, Username of login, Password, Email, and Website url if present. Also check for userid match with class Userinfo.cs
             SqlCommand command = new SqlCommand(SqlQuery, connection);
-            
             //test if UserID is not null
-            if (UserInfo.UserID == null)
-            {
+            if (UserInfo.UserID == null) {
                 MessageBox.Show("UserID is null", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            else
-            {
-                //ReSharper disable once HeapView.BoxingAllocation
-                //Parameterize the UserID
+            else { //Parameterize the UserID
                 command.Parameters.AddWithValue("@UserID", UserInfo.UserID);
-                
             }
             
             //Execute the command
             SqlDataReader reader = await command.ExecuteReaderAsync();
             //get number of rows
-            
-            
-            if (reader.HasRows)
-            {
+            if (reader.HasRows) {
                 while (reader.Read())
                 {
                     _rows++;
@@ -241,41 +230,36 @@ public partial class HomeView : UserControl
                     
                     //LoginsGrid.ShowGridLines= true;
                 }
-                if (_rows-1 == 1)
+                
+                if (_rows == 1)
                 {
                     if (NumberOfLogins != null)
                     {
-                        NumberOfLogins.Text = $"{_rows + 1}";
+                        NumberOfLogins.Text = $"{_rows}";
                     }
-                    if (loginstext != null)
-                    {
-                        loginstext.Text = "login";
-                    }
+                    
+                    loginstext.Text = "login";
+                    
                 }
                 else
                 {
                     if (NumberOfLogins != null)
                     {
-                        NumberOfLogins.Text = $"{_rows--}";
+                        NumberOfLogins.Text = $"{_rows}";
                     }
-                    if (loginstext != null)
-                    {
-                        loginstext.Text = "logins";
-                    }
+                    loginstext.Text = "logins";
+                    
                 }
             }
-            else
-            {
+            else {
                 MessageBox.Show("No rows found.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             await reader.CloseAsync();
         }
-        catch (Exception ex)
-        {
+        catch (Exception ex) {
             MessageBox.Show("Error" + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
-        finally
-        {
+        finally {
             connection.Close();
         }
     }
@@ -283,17 +267,14 @@ public partial class HomeView : UserControl
     private void TestConnection_Click(object sender, RoutedEventArgs e)
     {
         SqlConnection connection = new SqlConnection(ConnectionString);
-        try
-        {
+        try {
             connection.Open();
             MessageBox.Show("Connection successful", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
         }
-        catch (Exception ex)
-        {
+        catch (Exception ex) {
             MessageBox.Show("Connection failed: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
-        finally
-        {
+        finally {
             connection.Close();
         }
     }
