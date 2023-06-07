@@ -27,7 +27,7 @@ public partial class HomeView : UserControl
     
     private int _rows;
     
-    private const string SqlQuery = "SELECT Title, Username, Hashed_Password, Salt, Email, URL, Notes, Date_Of_Creation From Logins WHERE UserID = @UserID";
+    private const string SqlQuery = "SELECT * From Logins WHERE UserID = @UserID";
     public async void LoadData(Grid? LoginsGrid, TextBlock? NumberOfLogins, TextBlock? loginstext)
     {
         
@@ -35,18 +35,19 @@ public partial class HomeView : UserControl
         SqlConnection connection = new SqlConnection(ConnectionString);
         try {
             connection.Open();
-            //Select all logins from the database containing Title, Username of login, Password, Email, and Website url if present. Also check for userid match with class Userinfo.cs
+            //Select all logins from the database containing
+            //Title, Username of login, Password, Email, and Website url if present.
+            //Also check for userid match with class Userinfo.cs
             SqlCommand command = new SqlCommand(SqlQuery, connection);
             //test if UserID is not null
             if (UserInfo.UserID == null) {
                 MessageBox.Show("UserID is null", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            else { //Parameterize the UserID
-                command.Parameters.AddWithValue("@UserID", UserInfo.UserID);
-            }
-            
-            //Execute the command
+            //Parameterize the UserID
+            command.Parameters.AddWithValue("@UserID", UserInfo.UserID);
+
+                //Execute the command
             SqlDataReader reader = await command.ExecuteReaderAsync();
             //get number of rows
             if (reader.HasRows) {
@@ -105,7 +106,6 @@ public partial class HomeView : UserControl
                     {
                         password.Text = "No password found";
                     }
-                    
                     email.Text = email.Text != null ? reader.GetString("Email") : "No email found";
                     date.Text = reader.GetDateTime("Date_Of_Creation").ToShortDateString().ToString(CultureInfo.CurrentCulture);
                     
@@ -250,9 +250,6 @@ public partial class HomeView : UserControl
                     loginstext.Text = "logins";
                     
                 }
-            }
-            else {
-                MessageBox.Show("No rows found.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             await reader.CloseAsync();
         }
